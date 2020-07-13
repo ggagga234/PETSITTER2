@@ -1,6 +1,14 @@
+<<<<<<< HEAD:RETSITTER/src/main/resources/mappers/waitList-mapper.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Waitlist">
 	
 
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Reserve">
+
+
+>>>>>>> b2951192f15074ad7e1f045f7cf5b29481d3ebff:src/main/resources/mappers/waitList-mapper.xml
 </mapper>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:RETSITTER/src/main/resources/mappers/membd-mapper.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="membd">
@@ -58,4 +59,74 @@
 <select id="addselec" resultType="String">
 	select mem_address1 from member where mem_id=#{value}
 </select>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="membd">
+
+<select id="petselect" resultType="kh.pet.dto.Mypet_regDTO">
+	select * from mypet where master_id = #{value}
+</select>
+
+<insert id="memboardinsert">
+	insert into mem_board values('mb_'||mb_seq.nextval,#{mb_title,jdbcType=VARCHAR},#{mb_writer,jdbcType=VARCHAR},#{mb_request},sysdate,#{mb_pet_name},#{mb_service},#{mb_startday},#{mb_endday},#{mb_stime},#{mb_etime},#{mb_point,jdbcType=VARCHAR},#{mb_petphoto,jdbcType=VARCHAR},default,default,default)
+</insert>
+
+<!-- mb_seq -> 아이디값으로 수정 -->
+<select id="redlist" resultType="kh.pet.dto.MemboardDto">
+	select * from mem_board where mb_seq=#{seq}
+</select>
+
+<select id="petphoto" resultType="String">
+	select pet_photo from mypet where pet_name=#{pet_name} and master_id = #{master_id}
+</select> 
+
+<select id="gettime" resultType="String">
+	select time_times from reservation_time where time_seq=#{time}
+</select>
+
+<select id="getpettype" resultType="String">
+	select pet_type from mypet where pet_name=#{pet_name} and master_id = #{master_id}
+</select>
+
+<select id="modlist" resultType="kh.pet.dto.MemboardDto">
+	select * from mem_board where mb_seq=#{mb_seq}
+</select>
+
+<update id="Memboardupdate">
+	update mem_board set mb_title=#{mb_title,jdbcType=VARCHAR},mb_date=sysdate,mb_pet_name=#{mb_pet_name,jdbcType=VARCHAR},mb_service=#{mb_service},mb_startday=#{mb_startday},mb_endday=#{mb_endday},mb_request=#{mb_request},mb_stime=#{mb_stime},mb_etime=#{mb_etime} where mb_seq=#{mb_seq}
+</update>
+
+<update id="applyup">
+	update mem_board set mb_restatus='yes',mb_booker=#{mb_booker},mb_point=#{mb_point} where  mb_seq=#{mb_seq}
+</update>
+
+<select id="getArticleCount" resultType="int">
+ select count(*) from mem_board
+</select>
+
+<select id="mb_boardList" resultType="kh.pet.dto.MemboardDto">
+	select * from (select mem_board.*,row_number()over (order by mb_date desc) rnum from mem_board where sysdate <![CDATA[<=]]> mb_startday) where rnum between ${start} and ${end}
+</select>
+
+<delete id="deleteboard">
+	delete mem_board where mb_seq=#{mb_seq}
+</delete>
+
+<select id="seqid" resultType="kh.pet.dto.MemboardDto">
+	select * from mem_board where mb_writer=#{id} order by 5 desc 
+</select>
+
+<select id="addselec" resultType="String">
+	select mem_address1 from member where mem_id=#{value}
+</select>
+
+<select id="petsitter" resultType="int">
+	select mem_type from member where mem_id=#{value}
+</select>
+
+<select id="petselname" resultType="kh.pet.dto.MemboardDto">
+	select mb_pet_name  from mem_board where mb_writer=#{value}
+</select>
+>>>>>>> b2951192f15074ad7e1f045f7cf5b29481d3ebff:src/main/resources/mappers/membd-mapper.xml
 </mapper>
