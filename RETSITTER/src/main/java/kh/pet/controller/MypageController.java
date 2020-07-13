@@ -185,9 +185,11 @@ public class MypageController {
 		return "mypage/mypage-modfiy";
 	}
 	@RequestMapping("resultmodfiy")
-	public String resultmodfiy(Mypet_regDTO dto, MultipartFile img)throws Exception {
+	public void resultmodfiy(Mypet_regDTO dto, MultipartFile img, HttpServletResponse response)throws Exception {
+		MemberDTO dtos = (MemberDTO)session.getAttribute("loginInfo");
+		dto.setMaster_id(dtos.getMem_id());
 		petmodfiy.modfiy(dto, img);
-		return "main";
+		response.sendRedirect("list");
 	}
 
 }

@@ -115,8 +115,8 @@
 						<div class="select-wrap">
 							<span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
 							<select class="form-control" name="pet_ox">
-								<option value="yes">유</option>
-								<option value="no">무</option>
+								<option value="y">유</option>
+								<option value="n">무</option>
 							</select>
 						</div>
 						펫 나이 <input type="text" name="pet_age" class="form-control"
@@ -144,8 +144,8 @@
 						<div class="select-wrap">
 							<span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
 							<select class="form-control" name="pet_family">
-								<option value="yes">유</option>
-								<option value="no">무</option>
+								<option value="y">유</option>
+								<option value="n">무</option>
 							</select>
 						</div>
 

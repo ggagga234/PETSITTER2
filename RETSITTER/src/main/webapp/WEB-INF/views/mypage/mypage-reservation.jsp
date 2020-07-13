@@ -311,7 +311,7 @@ input {
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">반려견성격</label>
 								<textarea class="form-control texts" id="Person" rows="3"
-									style="width: 1110px; height: 361px; resize: none;"
+									style="width: 100%; height: 361px; resize: none;"
 									name="pet_character"></textarea>
 								<div style="position: relative; float: right;">
 									글자수 제한 : <label class="bytes1">0</label>/3000
@@ -322,7 +322,7 @@ input {
 								<label for="exampleFormControlTextarea1">특이사항</label><br>
 
 								<textarea class="form-control texts1" id="special" rows="3"
-									style="width: 1110px; height: 361px; resize: none;"
+									style="width: 100%; height: 361px; resize: none;"
 									id="special" name="pet_details"></textarea>
 								<div style="position: relative; float: right;">
 									글자수 제한 : <label class="bytes2">0</label>/3000

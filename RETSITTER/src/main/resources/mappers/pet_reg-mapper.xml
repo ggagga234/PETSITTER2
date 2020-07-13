@@ -71,17 +71,15 @@
 	</select>
 
 	<update id="petmodfiy">
-		update mypet set
-		pet_name=#{pet_name},
-		pet_photo=#{pet_photo},
-		pet_gender=#{pet_gender}, pet_ox=#{pet_ox},
-		pet_age=${pet_age},
-		pet_animal=#{pet_animal}, pet_type=#{pet_type},
-		pet_sort=#{pet_sort},
-		pet_family=#{pet_family},
-		pet_character=#{pet_character},
-		pet_details=#{pet_details} where
-		petseq=${petseq} and master_id=#{master_id};
+		update mypet set pet_name=#{pet_name}, 
+		pet_photo=#{pet_photo}, pet_gender=#{pet_gender},
+		pet_ox=#{pet_ox},pet_age=${pet_age},
+		pet_animal=#{pet_animal},pet_type=#{pet_type},
+		pet_sort=#{pet_sort},pet_family=#{pet_family},
+		pet_character=#{pet_character},pet_details=#{pet_details}
+		where petseq=${petseq} and master_id=#{master_id}
+		
+		
 	</update>
 
 	<select id="seq" resultType="String">

@@ -1,7 +1,5 @@
 package kh.pet.dao;
 
-import java.security.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

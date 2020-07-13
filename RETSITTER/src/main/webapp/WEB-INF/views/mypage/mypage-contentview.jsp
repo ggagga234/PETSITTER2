@@ -121,8 +121,8 @@ input {
 				"click",
 				function() {
 
-					window.open("/mypage/modfiy?seq=${dto.petseq}", "",
-							"width=550, height=500");
+					location.href='/mypage/modfiy?seq=${dto.petseq}'
+					
 
 				})
 
