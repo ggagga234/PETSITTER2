@@ -264,7 +264,6 @@ public class AdminService {
 		WaitlistDTO w_dto = dao.accept_pet_info(wait_seq);
 
 		MessageDTO b_dto = new MessageDTO();
-
 		b_dto.setMsg_reciever(w_dto.getMem_id());
 		b_dto.setMsg_title("예약 관련 글입니다.");
 		b_dto.setMsg_contents("문의하신 예약이 거절 되었습니다. 자세한 사항은 개별 문의를 부탁드립니다.");
