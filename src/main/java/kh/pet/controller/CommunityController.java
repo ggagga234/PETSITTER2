@@ -53,7 +53,7 @@ public class CommunityController {
 	@RequestMapping("writeProc")
 	public void writeProc(CommunityDTO cu_dto, HttpServletResponse res)throws Exception {
 		xssfilter xss =new xssfilter();
-		cu_dto.setCu_title(xss.cleanXSS(cu_dto.getCu_contents()));
+		cu_dto.setCu_title(xss.cleanXSS(cu_dto.getCu_title()));
 		cu_dto.setCu_writer(((MemberDTO)session.getAttribute("loginInfo")).getMem_id());
 		int result = cu_service.insert(cu_dto);
 		res.sendRedirect("list");
