@@ -189,23 +189,25 @@ public class AdminService {
 	public int accept_memboard(MemboardDto bdto) {
 		Map<String , String> seq_set = new HashMap<String, String>();
 		UUID uuid = UUID.randomUUID();
-		
+		String re_seq = uuid.toString().substring(0, 8);
 		seq_set.put("p_seq", bdto.getMb_seq());
-		seq_set.put("seq",uuid.toString());
+		seq_set.put("seq",re_seq);
 
 		MessageDTO b_dto = new MessageDTO();
 		b_dto.setMsg_reciever(bdto.getMb_booker());
 		b_dto.setMsg_title("예약 관련 글입니다.");
-		b_dto.setMsg_contents("예약이 완료되었습니다. 예약 번호는 " +uuid.toString() +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
+		b_dto.setMsg_contents("예약이 완료되었습니다. 예약 번호는 " +re_seq +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
 		b_dto.setMsg_sender("관리자");
 		mdao.sendMessage(b_dto);
+		mdao.recieveMessage(b_dto);
 
 		MessageDTO w_dto = new MessageDTO();
 		w_dto.setMsg_reciever(bdto.getMb_writer());
 		w_dto.setMsg_title("돌봄 서비스 관련 글입니다.");
-		w_dto.setMsg_contents("돌봄 서비스가 예약이 되었습니다. 예약 번호는 " +uuid.toString() +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
+		w_dto.setMsg_contents("돌봄 서비스가 예약이 되었습니다. 예약 번호는 " +re_seq +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
 		w_dto.setMsg_sender("관리자");
 		mdao.sendMessage(w_dto);
+		mdao.recieveMessage(w_dto);
 
 		return dao.accept_memboard(seq_set);
 	}
@@ -219,6 +221,7 @@ public class AdminService {
 		b_dto.setMsg_contents("문의하신 예약이 거절 되었습니다. 자세한 사항은 개별 문의를 부탁드립니다.");
 		b_dto.setMsg_sender("관리자");
 		mdao.sendMessage(b_dto);
+		mdao.recieveMessage(b_dto);
 
 		return dao.cancel_memboard(bdto.getMb_seq());
 
@@ -240,20 +243,23 @@ public class AdminService {
 
 		WaitlistDTO w_dto = dao.accept_pet_info(wait_seq);
 		UUID uuid = UUID.randomUUID();
-		ReserveDto dto = new ReserveDto(uuid.toString(),w_dto.getBoard_seq(),w_dto.getPetsitter_id(),w_dto.getMem_id(),w_dto.getRsv_pet_name(),w_dto.getRsv_point(),w_dto.getRsv_start_day(),w_dto.getRsv_end_day(),w_dto.getRsv_time());
+		String re_seq = uuid.toString().substring(0, 8); 
+		ReserveDto dto = new ReserveDto(re_seq,w_dto.getBoard_seq(),w_dto.getPetsitter_id(),w_dto.getMem_id(),w_dto.getRsv_pet_name(),w_dto.getRsv_point(),w_dto.getRsv_start_day(),w_dto.getRsv_end_day(),w_dto.getRsv_time());
 		MessageDTO b_dto = new MessageDTO();
 		b_dto.setMsg_reciever(w_dto.getMem_id());
 		b_dto.setMsg_title("펫 시터 예약 관련 글입니다.");
-		b_dto.setMsg_contents("예약이 완료되었습니다. 예약 번호는 " +uuid.toString() +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
+		b_dto.setMsg_contents("예약이 완료되었습니다. 예약 번호는 " +re_seq +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
 		b_dto.setMsg_sender("관리자");
 		mdao.sendMessage(b_dto);
-
+		mdao.recieveMessage(b_dto);
+		
 		MessageDTO p_dto = new MessageDTO();
 		p_dto.setMsg_reciever(w_dto.getPetsitter_id());
 		p_dto.setMsg_title("펫시터 서비스 관련 글입니다.");
-		p_dto.setMsg_contents("펫시터 서비스가 예약이 되었습니다. 예약 번호는 " +uuid.toString() +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
+		p_dto.setMsg_contents("펫시터 서비스가 예약이 되었습니다. 예약 번호는 " +re_seq +"이며,\n자세한 사항 예약 확인 란에서 확인을 하실 수 있습니다.");
 		p_dto.setMsg_sender("관리자");
 		mdao.sendMessage(p_dto);
+		mdao.recieveMessage(p_dto);
 
 		dao.accept_del_rsv(w_dto.getWait_seq());
 		return dao.accept_pet_rsv(dto);
