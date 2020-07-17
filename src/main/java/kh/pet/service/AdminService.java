@@ -289,7 +289,18 @@ public class AdminService {
 		map.put("end", end);
 		return dao.reportlist(map);
 	}
-
+	
+	@Transactional("txManager")
+	public int accept_report(int seq,String id) {
+		System.out.println(seq);
+		dao.del_report(seq);
+		return dao.up_report(id);	
+	}
+	
+	public int cancel_report(int seq) {
+		return dao.del_report(seq);
+	}
+	
 	//일일 방문자 체크
 	public List<Visitor_countDTO> be_visitor(){
 		return  dao.be_visiter();
