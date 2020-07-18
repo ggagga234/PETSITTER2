@@ -69,7 +69,7 @@ public class MemberService {
 		sendMail.setSubject("뭐하냥도와주개 이메일 인증");
 		sendMail.setText(new StringBuffer().append(id).append("님, 가입을 환영합니다. 아래 링크를 누르면 인증이 완료됩니다.").append("<br>")
 				.append("(혹시 잘못 전달되었다면, 이 이메일을 무시하셔도 됩니다)").append("<br>").append("<br>")
-				.append("<a href='http://192.168.60.13/member/emailConfirm?authKey=").append(key).append("&userid=")
+				.append("<a href='http://localhost/member/emailConfirm?authKey=").append(key).append("&userid=")
 				.append(id).append("' target='_blank'>이메일 인증 확인</a>").toString());
 
 		sendMail.setFrom("whatcathelpdog@gmail.com", "뭐하냥도와주개");

@@ -23,7 +23,7 @@
 
 	<insert id="pet_insert">
 		insert into mypet
-		values(mypet_seq.nextval,#{master_id},#{pet_name},#{pet_photo},#{pet_gender},#{pet_ox},${pet_age},#{pet_animal},#{pet_type},#{pet_sort},#{pet_family},#{pet_character},#{pet_details})
+		values(pet_seq.nextval,#{master_id},#{pet_name},#{pet_photo},#{pet_gender},#{pet_ox},${pet_age},#{pet_animal},#{pet_type},#{pet_sort},#{pet_family},#{pet_character},#{pet_details})
 	</insert>
 	
 	

@@ -222,7 +222,7 @@
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 										<li><a href="/admin/adminindex"><span
 												style="font-size: 20px">팀 소개</span></a></li>
-										<li><a href="/mb/mb_boardlist"><span
+										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
 										<li><a href="/board/outputList"><span
 												style="font-size: 20px">위탁 돌봄</span></a></li>

@@ -234,7 +234,7 @@ public class Mb_boardController {
 		return "redirect:modfilist";
 	}
 
-	@RequestMapping("mb_boardlist")
+	@RequestMapping("mb_board")
 	public String mb_board(Model m,HttpServletRequest req) throws Exception {
 		MemberDTO mdto = (MemberDTO)this.session.getAttribute("loginInfo");
 		int cpage = 1;
