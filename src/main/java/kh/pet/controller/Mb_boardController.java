@@ -65,7 +65,7 @@ public class Mb_boardController {
 		m.addAttribute("tmp",tmp);
 		m.addAttribute("list", list);
 		m.addAttribute("add", add);
-		return "mb_board/board_register";
+		return "/mb_board/board_register";
 	}
 
 
@@ -121,7 +121,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modfilist")
@@ -164,7 +164,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modified")
@@ -224,7 +224,7 @@ public class Mb_boardController {
 		m.addAttribute("petnames", petnames);	
 		m.addAttribute("services", services);
 
-		return "mb_board/board_Modified";
+		return "/mb_board/board_Modified";
 	}
 
 	@RequestMapping("modified_con")
@@ -254,7 +254,7 @@ public class Mb_boardController {
 		m.addAttribute("id",mdto.getMem_id());
 		m.addAttribute("navi", navi);
 		m.addAttribute("mblist", mblist);
-		return "mb_board/board_list";
+		return "/mb_board/board_list";
 	}
 
 	@RequestMapping("deleteboard")
