@@ -190,7 +190,7 @@
 	</update>
 	
 	<delete id="delete_report">
-		delete from reports report_seq = #{value};
+		delete from reports where report_seq = #{value}
 	</delete>
 	
 	<!--admin password   -->

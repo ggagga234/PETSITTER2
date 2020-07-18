@@ -195,6 +195,14 @@ public class AdminDAO {
 		return mybatis.selectList("Admin.reportlist",map);
 	}
 	
+	public int del_report(int seq) {
+		return mybatis.delete("Admin.delete_report",seq);
+	}
+	
+	public int up_report(String id) {
+		return mybatis.update("Admin.accpet_report",id);
+	}
+	
 	//관리자 패스워드 변경
 	public int admin_pass(String pw) {
 		return mybatis.update("Admin.admin_password",pw);

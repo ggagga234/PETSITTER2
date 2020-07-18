@@ -250,7 +250,6 @@ public class AdminController {
 		if(cpage == null) {
 			cpage = 1;
 		}
-		//간편 회원 페이지
 		List<MemberDTO> mdto = admin_service.black_member(cpage);
 		System.out.println(mdto.get(0).getMem_id());
 		String navi = admin_service.PagNavi(cpage,"black");
@@ -310,6 +309,8 @@ public class AdminController {
 		}
 	}
 
+	
+	//신고 관련 기능들
 	@RequestMapping("declaration")
 	public String go_admin_declaration(Model m,Integer cpage) {
 		if(cpage == null) {
@@ -319,7 +320,24 @@ public class AdminController {
 		m.addAttribute("reportlist", list);
 		return "admin/Declaration_management";
 	}
+	
+	@RequestMapping("accept_report")
+	public void accept_report(String id, int seq,HttpServletResponse response) throws Exception{
+		int re = admin_service.accept_report(seq, id);
+		JSONObject jobj = new JSONObject();
+		jobj.put("re", re );
+		response.getWriter().append(jobj.toString());
+	}
+	
+	@RequestMapping("cancel_report")
+	public void cancel_report(int seq,HttpServletResponse response) throws Exception{
+		int re = admin_service.cancel_report(seq);
+		JSONObject jobj = new JSONObject();
+		jobj.put("re", re );
+		response.getWriter().append(jobj.toString());
+	}
 
+	
 	@RequestMapping("cash")
 	public String go_admin_cash() {
 		return "admin/cash_management";
