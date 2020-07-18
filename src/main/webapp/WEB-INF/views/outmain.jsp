@@ -531,11 +531,18 @@ $("#login").on("click",function(){
 				if(check == 0 ){
 					alert('이메일 인증이 필요합니다. 이메일을 확인해주세요.');				
 					location.reload();
-
 				}
 				else if(check == 1){
 					alert('ID 또는 비밀번호를 확인하세요.');				
-				}else{
+				}
+				else if(check == 2){
+					
+				}
+				else if(check == 3){
+					alert('해당 아이디는 영구 정지 상태입니다.');
+					location.reload();
+				}
+				else{
 					location.reload();
 				}		
 			}	

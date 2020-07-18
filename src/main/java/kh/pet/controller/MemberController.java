@@ -177,12 +177,18 @@ public class MemberController {
 				rep.getWriter().append(jobj.toString());
 
 			}else {		//정상 로그인
-
 				MemberDTO mdto = mservice.loginInfo(mem_id);
-				Log_Count.log_count++;
-				session.setAttribute("loginInfo", mdto);
-				jobj.put("result", 2);
-				rep.getWriter().append(jobj.toString());				
+				if(mdto.getMem_status().contentEquals("YES")) {
+					Log_Count.log_count++;
+					session.setAttribute("loginInfo", mdto);
+					jobj.put("result", 2);
+					rep.getWriter().append(jobj.toString());		
+				}else if(mdto.getMem_status().contentEquals("STOP")){
+					
+				}else {
+					jobj.put("result", 2);
+					rep.getWriter().append(jobj.toString());
+				}
 
 			}
 

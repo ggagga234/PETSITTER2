@@ -83,6 +83,10 @@ public class AdminDAO {
 		return mybatis.selectOne("Admin.black_membercount");
 	}
 	
+	public Stop_memberDTO stop_data(String id) {
+		return mybatis.selectOne("Admin.stop_data");
+	}
+	
 	//회원 관리
 	public List<MemberDTO> memberlist(Map<String, Integer> map){
 		return mybatis.selectList("Admin.memberlist",map);

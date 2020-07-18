@@ -104,7 +104,7 @@
 	</update>
 	
 	<update id="mem_stop_solve">
-		update member set mem_pw = #{value} where MEM_ADDRESS1 = 'admin_address'
+		update member set  mem_status = 'YES' where mem_id = #{value}
 	</update>
 	
 	<select id="mem_stop_solve_search" resultType="kh.pet.dto.Stop_memberDTO">
