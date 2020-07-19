@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -179,9 +180,10 @@
 																<span class="txt2"> OR SNS LOGIN </span>
 															</div>
 
+																	<!-- href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://www.sojuhanjan.com/member/kakao&response_type=code"> -->
 															<div class="login100-form-social flex-c-m bg2 m-r-5">
 																<a class="btns"
-																	href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://192.168.60.13/member/kakao&response_type=code">
+																	href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://localhost/member/kakao&response_type=code">
 																	<span><img
 																		src="/resources/member/images/kakao_icon.png"></span> <span
 																	class="txt3">Kakao Login</span>
@@ -208,10 +210,10 @@
 
 										<li><a href="/member/login"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
 										<li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;">메세지<i
-												class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></a></li>
+										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메세지<i
+												class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
 
-										<li><a href="/member/logout"><span>LOGOUT</span></a></li>
+										<li><a href="/member/logout"a><span>LOGOUT</span></></li>
 									</ul>
 								</nav>
 							</div>
@@ -221,7 +223,7 @@
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 										<li><a href="/admin/adminindex"><span
 												style="font-size: 20px">팀 소개</span></a></li>
-										<li><a href="/mb/mb_board?cpage=1"><span
+										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
 										<li><a href="/board/outputList"><span
 												style="font-size: 20px">위탁 돌봄</span></a></li>
@@ -529,11 +531,18 @@ $("#login").on("click",function(){
 				if(check == 0 ){
 					alert('이메일 인증이 필요합니다. 이메일을 확인해주세요.');				
 					location.reload();
-
 				}
 				else if(check == 1){
 					alert('ID 또는 비밀번호를 확인하세요.');				
-				}else{
+				}
+				else if(check == 2){
+					
+				}
+				else if(check == 3){
+					alert('해당 아이디는 영구 정지 상태입니다.');
+					location.reload();
+				}
+				else{
 					location.reload();
 				}		
 			}	
@@ -579,5 +588,4 @@ $("#login").on("click",function(){
 
 	<script src="resources/main/js/main.js"></script>
 </body>
-
 </html>

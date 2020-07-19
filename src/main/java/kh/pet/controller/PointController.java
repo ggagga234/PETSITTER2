@@ -50,7 +50,9 @@ public class PointController {
 	public void apply(MemboardDto mbdto,HttpServletResponse response) throws Exception {
 		MemberDTO mdto = (MemberDTO)this.session.getAttribute("loginInfo");
 		JSONObject jobj = new JSONObject();
+		System.out.println("aaa"+mbdto.getMb_writer());
 		int mpoint = service.mpoint(mbdto.getMb_writer());
+		System.out.println("포인트"+mpoint);
 		String re = "false";
 		if(mpoint>mbdto.getMb_point()) {
 			int vpoint = mpoint - mbdto.getMb_point();

@@ -39,7 +39,7 @@
 </select>
 
 <select id="mb_boardList" resultType="kh.pet.dto.MemboardDto">
-	select * from (select mem_board.*,row_number()over (order by mb_date desc) rnum from mem_board where sysdate <![CDATA[<=]]> mb_startday) where rnum between ${start} and ${end}
+	select * from (select mem_board.*,row_number()over (order by mb_date desc) rnum from mem_board where to_date(sysdate,'YYYY-MM-DD') <![CDATA[<=]]> to_date(mb_startday,'YYYY-MM-DD')) where rnum between ${start} and ${end}
 </select>
 
 <select id="seqid" resultType="kh.pet.dto.MemboardDto">

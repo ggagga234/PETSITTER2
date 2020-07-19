@@ -83,7 +83,7 @@ $(function(){
 	})
 	//memboard 
 	$(".mem_accept").on("click",function(){
-		var seq = $(this).parent().parent().children('.p_seq').html();
+		var seq = $(this).attr("id");
 		var writer = $(this).parent().parent().children('.writer').html();
 		var booker = $(this).parent().parent().children('.booker').html();
 		var point = $(this).parent().parent().children('.point').html();
@@ -169,4 +169,49 @@ $(function(){
 			}	
 		})
 	})
+	
+	$(".report_accept").on("click",function(){
+		
+		var id = $(this).attr("id");
+		var seq = $(this).next().attr("id");
+		console.log(id);
+		console.log(seq);
+		$.ajax({
+			type: "GET",
+			url:"/admin/accept_report?id="+id+"&seq="+seq,
+			cache: false,
+			dataType : "json",
+			success: function(data){
+				check = data.re;
+				if(check > 0 ){
+					alert('성공적으로 작업이 완료 되었습니다..');
+					location.reload();
+				}
+				else{
+					alert('작업이 실패하였습니다.');
+				}		
+			}	
+		})
+	})
+	
+	$(".report_cancel").on("click",function(){
+		var seq = $(this).attr("id");
+		$.ajax({
+			type: "GET",
+			url:"/admin/cancel_report?seq="+seq,
+			cache: false,
+			dataType : "json",
+			success: function(data){
+				check = data.re;
+				if(check > 0 ){
+					alert('성공적으로 작업이 완료 되었습니다..');
+					location.reload();
+				}
+				else{
+					alert('작업이 실패하였습니다.');
+				}		
+			}	
+		})
+	})
+	
 })

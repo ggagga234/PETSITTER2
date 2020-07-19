@@ -44,6 +44,7 @@ public class MypageDAO {
 	}
 
 	public void insert(Mypet_regDTO dto) {
+		System.out.println(dto.getPet_family());
 		mybatis.insert("Pet_reg.pet_insert", dto);
 	}
 

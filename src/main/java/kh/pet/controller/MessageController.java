@@ -88,6 +88,7 @@ public class MessageController {
 	@RequestMapping("recievelist")
 	public String messagerecievelist(Integer cpage) {
 		String id = ((MemberDTO)session.getAttribute("loginInfo")).getMem_id();
+		System.out.println(id);
 		List<MessageDTO> recievelist = new ArrayList<MessageDTO>();
 		if(cpage == null) {
 			cpage = 1;
@@ -110,6 +111,7 @@ public class MessageController {
 	@RequestMapping("sendlist")//보낸 메세지함 리스트
 	public String messagesendlist(Integer cpage) {
 		String id = ((MemberDTO)session.getAttribute("loginInfo")).getMem_id();
+		System.out.println(id);
 		List<MessageDTO> sendlist = new ArrayList<MessageDTO>();
 		if(cpage == null) {
 			cpage = 1;

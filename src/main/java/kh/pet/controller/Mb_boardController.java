@@ -51,17 +51,21 @@ public class Mb_boardController {
 				petname.add(PetNameArr);
 			}
 		}
-
-		for(Mypet_regDTO a: list) {
-			System.out.println("a"+a.getPet_name());
+		List<String> tmp = new ArrayList<String>();
+		for(Mypet_regDTO petall : list) {
+			tmp.add(petall.getPet_name());
 		}
-		for(String b: petname) {
-			System.out.println("b"+b);
+		
+		
+		for(String petboard: petname) {
+			tmp.remove(petboard);
 		}
-		m.addAttribute("petname",petname);
+		
+		
+		m.addAttribute("tmp",tmp);
 		m.addAttribute("list", list);
 		m.addAttribute("add", add);
-		return "mb_board/board_register";
+		return "/mb_board/board_register";
 	}
 
 
@@ -117,7 +121,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modfilist")
@@ -160,7 +164,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modified")
@@ -200,17 +204,27 @@ public class Mb_boardController {
 				}
 			}
 		}
-
+		
+		List<String> tmp = new ArrayList<String>();
+		for(Mypet_regDTO petall : list) {
+			tmp.add(petall.getPet_name());
+		}
+		
+		
+		for(String petboard: petexc) {
+			System.out.println("a"+petboard);
+			tmp.remove(petboard);
+		}
 
 		String add = service.addselec(modlist.getMb_writer());
-		m.addAttribute("petexc",petexc);
+		m.addAttribute("tmp",tmp);
 		m.addAttribute("list", list);
 		m.addAttribute("add", add);	
 		m.addAttribute("modlist", modlist);	
 		m.addAttribute("petnames", petnames);	
 		m.addAttribute("services", services);
 
-		return "mb_board/board_Modified";
+		return "/mb_board/board_Modified";
 	}
 
 	@RequestMapping("modified_con")
@@ -240,7 +254,7 @@ public class Mb_boardController {
 		m.addAttribute("id",mdto.getMem_id());
 		m.addAttribute("navi", navi);
 		m.addAttribute("mblist", mblist);
-		return "mb_board/board_list";
+		return "/mb_board/board_list";
 	}
 
 	@RequestMapping("deleteboard")
@@ -249,7 +263,7 @@ public class Mb_boardController {
 		return "redirect:mb_board";
 	}
 
-	
 
-	
+
+
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 public class xssfilter {
 	
 	public String cleanXSS(String value) {
+		value = value.replaceAll("<p>", "").replaceAll("</p>", "");
 		value = value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		value = value.replaceAll("\\(", "&#40;").replaceAll("\\)", "&#41;");
 		value = value.replaceAll("'", "&#39;");

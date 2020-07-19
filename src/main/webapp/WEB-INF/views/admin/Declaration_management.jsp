@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 		<script src="/resources/admin/admin_js/navi.js"></script>
 		<link rel="stylesheet" href="/resources/admin/admin_css/case.css" type="text/css">
+		<script src="/resources/admin/admin_js/admin.js"></script>
     </head>
     <body>
         <div class="wrap row bg-light">
@@ -128,8 +129,8 @@
 	                                    	</c:choose>
 	                                    	</div>
 	                                    	<div class="col">
-	                                    		<button class="btn btn-outline-primary my-2 my-sm-0 btn-sm">수락</button>
-	                                            <button class="btn btn-outline-primary my-2 my-sm-0 btn-sm">거절</button>
+	                                    		<button class="btn btn-outline-primary my-2 my-sm-0 btn-sm report_accept" id="${i.report_target}">수락</button>
+	                                            <button class="btn btn-outline-primary my-2 my-sm-0 btn-sm report_cancel" id="${i.report_seq}">거절</button>
 	                                       </div>
 	                                    </div>
 	                                    <hr class="hr2">

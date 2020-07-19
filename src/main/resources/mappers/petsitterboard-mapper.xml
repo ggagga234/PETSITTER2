@@ -18,7 +18,7 @@
 	</insert>
 	
 	<insert id="createTb">
-		insert into cur_reserve (parent_board_seq, cur_date) values(#{parent_board_seq},#{cur_date})
+		insert into cur_reserve (parent_board_seq,cur_date) values(#{parent_board_seq},#{cur_date})
 	</insert>
 	
 	<delete id="deleteBoard">

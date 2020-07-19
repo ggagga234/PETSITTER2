@@ -83,6 +83,10 @@ public class AdminDAO {
 		return mybatis.selectOne("Admin.black_membercount");
 	}
 	
+	public Stop_memberDTO stop_data(String id) {
+		return mybatis.selectOne("Admin.stop_data");
+	}
+	
 	//회원 관리
 	public List<MemberDTO> memberlist(Map<String, Integer> map){
 		return mybatis.selectList("Admin.memberlist",map);
@@ -193,6 +197,14 @@ public class AdminDAO {
 	//신고 관련 테이블
 	public List<ReportDTO> reportlist(Map<String, Integer> map){
 		return mybatis.selectList("Admin.reportlist",map);
+	}
+	
+	public int del_report(int seq) {
+		return mybatis.delete("Admin.delete_report",seq);
+	}
+	
+	public int up_report(String id) {
+		return mybatis.update("Admin.accpet_report",id);
 	}
 	
 	//관리자 패스워드 변경

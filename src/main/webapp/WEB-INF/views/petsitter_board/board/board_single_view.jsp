@@ -273,6 +273,7 @@ ul>li, input {
 		         })
 		         
 		         
+
 		         // 포인트 계산
 		        	$(".price_item").on("change",function(){
 		        		if( $("input[name='rsv_pet_name']:checked").val() != "" && $("#rsv_start_day").val() != "" && $("#rsv_end_day").val() != "" && $("input[name='rsv_time']:checked").val() != ""){
