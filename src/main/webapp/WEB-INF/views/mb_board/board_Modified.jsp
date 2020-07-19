@@ -136,7 +136,7 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span
+										<li><a href="/team"><span
 												style="font-size: 20px">팀 소개</span></a></li>
 										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
@@ -404,7 +404,7 @@
 					<div class="col-lg-4">
 						<p class="mb-0">
 							<a href="signup.html"
-								class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
+								id="register_btn" class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
 						</p>
 					</div>
 				</div>
@@ -594,7 +594,7 @@
 			$(".etimelist  li").on("click", function() {
 				var edata = $(this).data("time");
 				if (dataTime >= edata) {
-					alert("다시선택하세요");
+					alert("시작을 다시 선택해주세요");
 					$(".etime").html("끝시간");
 				} else {
 					$("#stime").val($(".stime").html());
@@ -649,21 +649,16 @@
 			}
 		})
 	</script>
-	<!-- <script>
-		$("#send").on("submit", function() {
-			var count=0;
-			<c:forEach var="i" items="${petexc}">
-				$(".petname:checked").each(function(index, item) {
-					console.log($(item).val());
-					if ("${i}" == $(item).val()) {
-						alert("이미 강아지가 존재 합니다.")
-						return false;
-					}
-				})
-			</c:forEach>
-				return false;
-		})
-	</script> -->
+	<script>
+	$("#register_btn").on("click",function(){
+	       if(${sessionScope.loginInfo.mem_type == '2'}){
+	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
+	          location.href="/petsitter/outputSingle";
+	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
+	          location.href="/petsitter/petsitter_register_form";
+	       } 
+	     });
+	</script>
 
 </body>
 </html>

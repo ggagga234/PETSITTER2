@@ -103,17 +103,19 @@
 					<div class="col-12 col-xl-2">
 						<h1 class="mb-2 site-logo">
 
-						<c:choose>
-							<c:when test="${loginInfo.mem_id eq '관리자' && loginInfo.mem_address1 eq 'admin_address'}">
-								<a href="/admin/adminindex"><img src="resources/images/dogss.png"
-								style="width: 250px; height: 60px;"></a>
-							</c:when>
-							<c:otherwise>
-								<a href="index.html"><img src="resources/images/dogss.png"
-								style="width: 250px; height: 60px;"></a>
-							</c:otherwise>
-						</c:choose>
-							
+							<c:choose>
+								<c:when
+									test="${loginInfo.mem_id eq '관리자' && loginInfo.mem_address1 eq 'admin_address'}">
+									<a href="/admin/adminindex"><img
+										src="resources/images/dogss.png"
+										style="width: 250px; height: 60px;"></a>
+								</c:when>
+								<c:otherwise>
+									<a href="/"><img src="resources/images/dogss.png"
+										style="width: 250px; height: 60px;"></a>
+								</c:otherwise>
+							</c:choose>
+
 						</h1>
 					</div>
 					<c:choose>
@@ -122,7 +124,7 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span>팀소개</span></a></li>
+										<li><a href="/team"><span>팀소개</span></a></li>
 										<li><a href="#introduce"><span>서비스소개</span></a></li>
 										<li><a data-toggle="modal" href="#login1"><span>로그인</span></a></li>
 										<li><a href="/member/signup"><span>회원가입</span></a></li>
@@ -174,13 +176,14 @@
 
 
 															<div class="container-login100-form-btn">
-																<button class="login100-form-btn" type="button" id="login">Login</button>
+																<button class="login100-form-btn" type="button"
+																	id="login">Login</button>
 															</div>
 															<div class="text-center p-t-46 p-b-20">
 																<span class="txt2"> OR SNS LOGIN </span>
 															</div>
 
-																	<!-- href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://www.sojuhanjan.com/member/kakao&response_type=code"> -->
+															<!-- href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://www.sojuhanjan.com/member/kakao&response_type=code"> -->
 															<div class="login100-form-social flex-c-m bg2 m-r-5">
 																<a class="btns"
 																	href="https://kauth.kakao.com/oauth/authorize?client_id=4dd67a91f5b80223eb0934cae5fa4c50&redirect_uri=http://localhost/member/kakao&response_type=code">
@@ -208,12 +211,17 @@
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 
-										<li><a href="/member/login"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메세지<i
-												class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
+										<li><a href="/member/login"><span>포인트 충전소<i
+													class="icofont-money icofont-1x"
+													style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
+										<li><a href="/mypage/mypage"><span>MY PAGE<i
+													class="icofont-live-messenger icofont-1x"
+													style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
+										<li><a href="/message/recievelist"
+											onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메세지<i
+													class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
 
-										<li><a href="/member/logout"a><span>LOGOUT</span></></li>
+										<li><a href="/member/logout" a><span>LOGOUT</span></></li>
 									</ul>
 								</nav>
 							</div>
@@ -221,8 +229,8 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span
-												style="font-size: 20px">팀 소개</span></a></li>
+										<li><a href="/team"><span style="font-size: 20px">팀
+													소개</span></a></li>
 										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
 										<li><a href="/board/outputList"><span
@@ -240,13 +248,9 @@
 						<a href="#" class="site-menu-toggle js-menu-toggle text-white"><span
 							class="icon-menu h3"></span></a>
 					</div>
-
 				</div>
-
 			</div>
 		</header>
-
-
 
 		<div class="site-blocks-cover overlay"
 			style="background-image: url(resources/main/images/outmain_img.jpg);"
@@ -423,7 +427,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="site-section bg-light">
 			<div class="container">
 				<div class="row justify-content-center mb-5">
@@ -448,24 +452,49 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="py-5 bg-info">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 mr-auto mb-4 mb-lg-0">
-						<h2 class="mb-3 mt-0 text-white">Let's get started. Create
-							your account</h2>
-					</div>
-					<div class="col-lg-4">
-						<p class="mb-0">
-							<a href="signup.html"
-								class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">Sign
-								Up</a>
-						</p>
+
+		<c:choose>
+			<c:when test="${empty loginInfo}">
+
+				<div class="py-5 bg-info">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7 mr-auto mb-4 mb-lg-0">
+								<h2 class="mb-3 mt-0 text-white">Let's get started. Create
+									your account</h2>
+							</div>
+							<div class="col-lg-4">
+								<p class="mb-0">
+									<a href="/member/signup"
+										class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">Sign
+										Up</a>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</c:when>
+			<c:otherwise>
+
+
+				<div class="py-5 bg-info">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7 mr-auto mb-4 mb-lg-0">
+								<h2 class="mb-3 mt-0 text-white">전문적인 펫시터가 될 수 있습니다.</h2>
+							</div>
+							<div class="col-lg-4">
+								<p class="mb-0">
+									<a href="signup.html" id="register_btn"
+										class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터
+										지원하기</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
 
 		<footer style="padding-bottom: 80px;">
 			<div class="container">
@@ -481,40 +510,61 @@
 				</div>
 			</div>
 		</footer>
-	</div>
 
 
-	<script src="resources/main/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/main/js/jquery-ui.js"></script>
-	<script src="resources/main/js/popper.min.js"></script>
-	<script src="resources/main/js/bootstrap.min.js"></script>
-	<script src="resources/main/js/owl.carousel.min.js"></script>
-	<script src="resources/main/js/jquery.stellar.min.js"></script>
-	<script src="resources/main/js/jquery.countdown.min.js"></script>
-	<script src="resources/main/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/main/js/bootstrap-datepicker.min.js"></script>
-	<script src="resources/main/js/aos.js"></script>
-	<script src="resources/main/js/rangeslider.min.js"></script>
+		<script src="resources/main/js/jquery-migrate-3.0.1.min.js"></script>
+		<script src="resources/main/js/jquery-ui.js"></script>
+		<script src="resources/main/js/popper.min.js"></script>
+		<script src="resources/main/js/bootstrap.min.js"></script>
+		<script src="resources/main/js/owl.carousel.min.js"></script>
+		<script src="resources/main/js/jquery.stellar.min.js"></script>
+		<script src="resources/main/js/jquery.countdown.min.js"></script>
+		<script src="resources/main/js/jquery.magnific-popup.min.js"></script>
+		<script src="resources/main/js/bootstrap-datepicker.min.js"></script>
+		<script src="resources/main/js/aos.js"></script>
+		<script src="resources/main/js/rangeslider.min.js"></script>
 
-	<!-- 로그인 -->
-	<!--===============================================================================================-->
-	<script src="/resources/member/vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/resources/member/vendor/bootstrap/js/popper.js"></script>
-	<script src="/resources/member/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/resources/member/vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/resources/member/vendor/daterangepicker/moment.min.js"></script>
-	<script
-		src="/resources/member/vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="/resources/member/js/main.js"></script>
-	<!--===============================================================================================-->
+		<!-- 로그인 -->
+		<!--===============================================================================================-->
+		<script src="/resources/member/vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/resources/member/vendor/bootstrap/js/popper.js"></script>
+		<script src="/resources/member/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/resources/member/vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/resources/member/vendor/daterangepicker/moment.min.js"></script>
+		<script
+			src="/resources/member/vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="/resources/member/js/main.js"></script>
+		<!--===============================================================================================-->
 
 
-	<script src="resources/main/js/typed.js"></script>
+		<script src="resources/main/js/typed.js"></script>
+	
 	<script>
+    window.__ht_wc = window.__ht_wc || {};
+    window.__ht_wc.host = 'design.happytalkio.com';
+    window.__ht_wc.site_id = '4000001531'; // site_id
+    window.__ht_wc.site_name = 'petsitter'; // 회사 이름
+    window.__ht_wc.category_id = '119372'; // 대분류 id
+    window.__ht_wc.division_id = '119373'; // 중분류 id
+    
+    // 고정 및 Custom 파라미터 추가 영역, 파라미터가 여러개인 경우 ,(콤마)로 구분
+    // window.__ht_wc.params = 'site_uid=abcd1234,parameter1=param1';
+    
+    (function() {
+        var ht = document.createElement('script');
+        ht.type = 'text/javascript';
+        ht.async = true;
+        ht.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + window.__ht_wc.host + '/web_chatting/tracking.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ht, s);
+    })();
+</script>
+
+		<script>
 
 $("#login").on("click",function(){	
 		
@@ -590,6 +640,6 @@ $("#login").on("click",function(){
 			
 	</script>
 
-	<script src="resources/main/js/main.js"></script>
+		<script src="resources/main/js/main.js"></script>
 </body>
 </html>

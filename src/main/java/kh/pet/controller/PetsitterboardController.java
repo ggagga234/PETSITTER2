@@ -193,7 +193,7 @@ public class PetsitterboardController {
 	// 占실시곤옙 占쏙옙占쏙옙트占쏙옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
 	@ResponseBody
 	@RequestMapping(value="/selectPrice", method=RequestMethod.POST)
-	public List<Integer> selectPrice(@RequestParam(value="timearr[]") List<String> timearr,@RequestParam(value="typearr[]")List<String> typearr) throws Exception{
+	public List<Integer> selectPrice(@RequestParam(value="timearr[]",required=false) List<String> timearr,@RequestParam(value="typearr[]",required=false)List<String> typearr) throws Exception{
 
 		ArrayList<Object> list = new ArrayList<>();
 
