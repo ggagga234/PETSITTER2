@@ -527,7 +527,7 @@ $("#login").on("click",function(){
 			dataType : "json",
 			success: function(data){
 				var check = data.result;
-				
+				var time = data.time;
 				if(check == 0 ){
 					alert('이메일 인증이 필요합니다. 이메일을 확인해주세요.');				
 					location.reload();
@@ -536,9 +536,13 @@ $("#login").on("click",function(){
 					alert('ID 또는 비밀번호를 확인하세요.');				
 				}
 				else if(check == 2){
-					
+					location.reload();
 				}
 				else if(check == 3){
+					alert('해당 아이디는 '+time+'일 간 정지 중입니다.');
+					location.reload();
+				}
+				else if(check == 4){
 					alert('해당 아이디는 영구 정지 상태입니다.');
 					location.reload();
 				}

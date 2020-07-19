@@ -163,6 +163,10 @@ public class AdminService {
 		dao.mem_stop_solve(list);
 	}
 	
+	public Stop_memberDTO stop_memdata(String id) {
+		return dao.stop_data(id);
+	}
+	
 	
 	//맴버 호출
 	public List<MemberDTO> member(int cpage){

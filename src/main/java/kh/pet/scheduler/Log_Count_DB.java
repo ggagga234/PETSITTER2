@@ -16,6 +16,7 @@ public class Log_Count_DB {
 
 	@Scheduled(cron = "0 */10 * * * ?")
 	public void logWrite() {
+		service.stop_scaduler();
 		service.update_v();
 	}
 }

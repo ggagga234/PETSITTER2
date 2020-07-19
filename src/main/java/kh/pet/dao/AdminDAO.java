@@ -84,7 +84,8 @@ public class AdminDAO {
 	}
 	
 	public Stop_memberDTO stop_data(String id) {
-		return mybatis.selectOne("Admin.stop_data");
+		Stop_memberDTO dto = mybatis.selectOne("Admin.stop_data",id);
+		return dto;
 	}
 	
 	//회원 관리

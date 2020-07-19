@@ -23,8 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
+import com.sun.prism.paint.Stop;
 
 import kh.pet.dto.MemberDTO;
+import kh.pet.dto.Stop_memberDTO;
+import kh.pet.service.AdminService;
 import kh.pet.service.KakaoAPIService;
 import kh.pet.service.MemberService;
 import kh.pet.service.NaverLoginService;
@@ -38,7 +41,11 @@ public class MemberController {
 	private MemberService mservice;
 
 	@Autowired
-	private HttpSession session;	
+	private HttpSession session;
+	
+	@Autowired
+	private AdminService ad_service;
+	
 	@Autowired
 	private NaverLoginService naser;
 	
@@ -181,12 +188,16 @@ public class MemberController {
 				if(mdto.getMem_status().contentEquals("YES")) {
 					Log_Count.log_count++;
 					session.setAttribute("loginInfo", mdto);
-					jobj.put("result", 2);
+					jobj.put("result",2);
 					rep.getWriter().append(jobj.toString());		
-				}else if(mdto.getMem_status().contentEquals("STOP")){
-					
+				}else if(mdto.getMem_status().contentEquals("stop")){
+					Stop_memberDTO stop =  ad_service.stop_memdata(mdto.getMem_id());
+					System.out.println(stop.getStop_day());
+					jobj.put("result",3);
+					jobj.put("time", stop.getStop_day());
+					rep.getWriter().append(jobj.toString());
 				}else {
-					jobj.put("result", 2);
+					jobj.put("result",4);
 					rep.getWriter().append(jobj.toString());
 				}
 
@@ -244,7 +255,7 @@ public class MemberController {
 
 
 	@RequestMapping("/kakao") //카카오 로그인
-	public String kakaologin(String code, Model model) throws Exception {
+	public String kakaologin(String code, Model model,HttpServletResponse response) throws Exception {
 
 		KakaoAPIService ka = new KakaoAPIService();
 		String access_Token = ka.getAccessToken(code);
@@ -268,10 +279,16 @@ public class MemberController {
 		}
 
 		MemberDTO mdto = mservice.loginInfo(id);
-		Log_Count.log_count++;
-		session.setAttribute("loginInfo", mdto);
-		session.setAttribute("access_Token", access_Token);
-
+		if(mdto.getMem_status().contentEquals("YES")) {
+			Log_Count.log_count++;
+			session.setAttribute("loginInfo", mdto);
+			session.setAttribute("access_Token", access_Token);
+		}else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('해당 아이디는 정지 상태입니다..'); location.href='/';</script>");
+			out.flush();
+		}
 		return "redirect:/"; //메인으로 가야함.
 
 
