@@ -9,6 +9,16 @@
   	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<link href="/resources/mb/icofont/icofont.min.css" rel="stylesheet">
 	<link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+	<script>
+		$(function(){
+			$("#search1").on("click",function(){
+				alert("조만간 구현될 예정입니다 :-P");
+			});
+			$("#search2").on("click",function(){
+				alert("조만간 구현될 예정입니다 :-P");
+			});
+		})
+	</script>
   </head>
   <body>
 	<jsp:include page="/WEB-INF/views/petsitter_board/header.jsp"/>
@@ -92,14 +102,14 @@
               <h3 class="h5 text-black mb-3">FIND</h3>
               <form action="#" method="post">
                 <div class="form-group">
-                  <input type="text" placeholder="What are you looking for?" class="form-control">
+                  <input type="text" placeholder="What are you looking for?" class="form-control" id="search1">
                 </div>
    
                 <div class="form-group">
                   <!-- select-wrap, .wrap-icon -->
                   <div class="wrap-icon">
                     <span class="icon icon-room"></span>
-                    <input type="text" placeholder="Location" class="form-control">
+                    <input type="text" placeholder="Location" class="form-control" id="search2">
                   </div>
                 </div>
               </form>

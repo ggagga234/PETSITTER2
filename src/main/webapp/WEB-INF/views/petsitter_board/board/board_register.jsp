@@ -394,9 +394,9 @@ function check() {
 									</ul>
 									<ul class="head_date" style="text-align: center">
 										<li><input type="text" id="start_day" name="psb_start_day"
-											style="width: 150px; text-align: center;" placeholder="시작일" required></li>
+											style="width: 150px; text-align: center;" placeholder="시작일" required readonly></li>
 										<li><input type="text" id="end_day" name="psb_end_day"
-											style="width: 150px; text-align: center;" placeholder="종료일" required></li>
+											style="width: 150px; text-align: center;" placeholder="종료일" required readonly></li>
 									</ul>
 								</div>
 								<script>
