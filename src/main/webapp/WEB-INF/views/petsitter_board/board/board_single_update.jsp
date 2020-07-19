@@ -125,6 +125,9 @@ ul>li, input {
 	display: inline-block;
 	padding-right: 20px;
 }
+.btns button{
+	margin-right:10px;
+}
 </style>
 
 <script>
@@ -188,6 +191,10 @@ ul>li, input {
 
 			$("#psb_thumb").on('change', function() {
 				readURL(this);
+			});
+			
+			$("#toback").on("click",function(){
+				location.href="/board/board_single_view?psb_writer=${tot_Info.psb_writer }&psb_seq=${tot_Info.psb_seq}";
 			});
 		});
 		
@@ -416,9 +423,9 @@ function check() {
 									</ul>
 									<ul class="head_date" style="text-align: center">
 										<li><input type="text" id="start_day" name="psb_start_day"
-											style="width: 150px; text-align: center;" placeholder="시작일" required></li>
+											style="width: 150px; text-align: center;" placeholder="시작일" required readonly></li>
 										<li><input type="text" id="end_day" name="psb_end_day"
-											style="width: 150px; text-align: center;" placeholder="종료일" required></li>
+											style="width: 150px; text-align: center;" placeholder="종료일" required readonly></li>
 									</ul>
 								</div>
 								<script>
@@ -429,6 +436,7 @@ function check() {
 										var datePicker = new Datepickk1(
 												{	
 													container : document.querySelector('#datePicker'),
+													
 													inline : true,
 													range : true
 													
@@ -491,14 +499,14 @@ function check() {
 							
 						</div>
 
-						<div class="mb-5">
-							<button
-								class="btn btn-primary text-#878786 btn-md px-5 font-weight-bold btn-md-block"
-								type="submit">등록하기</button>
-						</div>
+						
 					</div>
+					<div class="col-lg-11 btns" style="margin:auto;" >
+						<button class="btn btn-primary text-#878786 btn-md px-5 font-weight-bold btn-md-block" type="submit" id="toupdate">수정하기</button>
+						<button class="btn btn-primary text-#878786 btn-md px-5 font-weight-bold btn-md-block" type="button" id="toback" >뒤로가기</button>
+					</div>
+					
 				</div>
-				</row>
 			</form>
 		</div>
 	</div>

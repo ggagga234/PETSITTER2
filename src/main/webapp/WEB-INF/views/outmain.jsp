@@ -558,9 +558,22 @@ $("#login").on("click",function(){
 	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
 	          location.href="/petsitter/outputSingle";
 	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
-	          location.href="/petsitter/petsitter_register_form";
-	       } 
-	     });
+	    	   $.ajax({
+	    		   url:"/petsitter/checkRegister?ps_id=${sessionScope.loginInfo.mem_id}",
+	    		   type:"POST",
+	    		   success:function(result){
+	    			   if(result==1){
+	    				   alert("${sessionScope.loginInfo.mem_id}님의 펫시터 지원서를 확인 중입니다.");
+	    			   } else {
+	    				   location.href="/petsitter/petsitter_register_form";
+	    			   }
+	    		   }
+	    		 })
+	      	}
+	    })
+	    	   
+	       
+	    
 			
 	</script>
 
