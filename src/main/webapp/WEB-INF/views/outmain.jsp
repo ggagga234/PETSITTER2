@@ -248,13 +248,9 @@
 						<a href="#" class="site-menu-toggle js-menu-toggle text-white"><span
 							class="icon-menu h3"></span></a>
 					</div>
-
 				</div>
-
 			</div>
 		</header>
-
-
 
 		<div class="site-blocks-cover overlay"
 			style="background-image: url(resources/main/images/outmain_img.jpg);"
