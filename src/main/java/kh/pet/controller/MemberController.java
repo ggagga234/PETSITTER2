@@ -311,88 +311,109 @@ public class MemberController {
 
 
 	//네이버 로그인 성공시 callback호출 메소드
-	@RequestMapping(value = "/naverlogin", method = { RequestMethod.GET, RequestMethod.POST })
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException {
-		
-		OAuth2AccessToken oauthToken;
-		oauthToken = naser.getAccessToken(session, code, state);
+	   @RequestMapping(value = "/naverlogin", method = { RequestMethod.GET, RequestMethod.POST })
+	   public String callback(Model model,  String code, String state, HttpSession session,HttpServletResponse response) throws Exception {
+	      
+	      OAuth2AccessToken oauthToken;
+	      oauthToken = naser.getAccessToken(session, code, state);
 
-		//로그인 사용자 정보를 읽어온다.
-		HashMap<String, String> userInfo  = naser.getUserProfile(oauthToken);
+	      //로그인 사용자 정보를 읽어온다.
+	      HashMap<String, String> userInfo  = naser.getUserProfile(oauthToken);
 
-		String id = userInfo.get("id");
-		String email = userInfo.get("email");
+	      String id = userInfo.get("id");
+	      String email = userInfo.get("email");
 
-		Map<String, String> map = new HashMap<String, String>(); //ID, 이메일 저장해서 회원정보 확인과 정보보내기 위함.
-		map.put("id", id);
-		map.put("email", email);
+	      Map<String, String> map = new HashMap<String, String>(); //ID, 이메일 저장해서 회원정보 확인과 정보보내기 위함.
+	      map.put("id", id);
+	      map.put("email", email);
 
-		int naver_id = mservice.findSNS(map); //id있는지 확인.	
-		if(naver_id < 1) {
+	      int naver_id = mservice.findSNS(map); //id있는지 확인.   
+	      if(naver_id < 1) {
 
-			model.addAttribute("joinInfo", map);
-			model.addAttribute("join_type", 3);
+	         model.addAttribute("joinInfo", map);
+	         model.addAttribute("join_type", 3);
 
-			return "/member/signup_sns";
+	         return "/member/signup_sns";
 
-		}
-		return "/";
-	}
-
-
-	@RequestMapping("/logout") //로그아웃
-	public String logout() {
-		MemberDTO dto = (MemberDTO) session.getAttribute("loginInfo");
-		int type = dto.getMem_join_type();
-		
-		
-		
-		if(type == 1) {
-			session.invalidate();
-			return "redirect:/";
-		}else if(type == 2) {
-		
-			KakaoAPIService ka = new KakaoAPIService();
-			ka.kakaoLogout((String)session.getAttribute("access_Token"));
-			
-			
-			session.invalidate();			
-			return "redirect:/";
-		}
-		
-		session.invalidate();
-		return "redirect:/";
-		 
-	}
+	      }
+	      MemberDTO mdto = mservice.loginInfo(id);
+	      if(mdto.getMem_status().contentEquals("YES")) {
+				Log_Count.log_count++;
+				session.setAttribute("loginInfo", mdto);
+	      }
+	      else {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('해당 아이디는 정지 상태입니다..'); location.href='/';</script>");
+				out.flush();
+			}  
+	      return "redirect:/";
+	   }
 
 
-	@RequestMapping(value ="/withdraw",  method = RequestMethod.GET) //회원탈퇴
-	public String withdraw() throws Exception {
-		MemberDTO dto = (MemberDTO) session.getAttribute("loginInfo");
-		String id = dto.getMem_id();
-		int type = dto.getMem_join_type();
-		
-		
-		if(type == 1) {
-			mservice.withdraw(id);
-			session.invalidate();
-			return "redirect:/";
-			
-		}else if(type == 2) {
-			
-			KakaoAPIService ka = new KakaoAPIService();
-			
-			mservice.withdraw(id);
-			 ka.kakaoWithdraw((String)session.getAttribute("access_Token"));
-			 session.invalidate();
-			return "redirect:/";
-		}
-		
-		 session.invalidate();
-		return "redirect:/";
-		
+	   @RequestMapping("/logout") //로그아웃
+	   public String logout(HttpServletResponse response) throws Exception {
+	      MemberDTO dto = (MemberDTO) session.getAttribute("loginInfo");
+	      int type = dto.getMem_join_type();
+	      
+	      
+	      
+	      if(type == 1) {
+	         session.invalidate();
+	         return "redirect:/";
+	      }else if(type == 2) {
+	      
+	         KakaoAPIService ka = new KakaoAPIService();
+	         ka.kakaoLogout((String)session.getAttribute("access_Token"));         
+	         
+	         session.removeAttribute("access_Token");
+	         session.invalidate();         
+	         return "redirect:/";
+	         
+	      }else if(type == 3) {
+	         session.invalidate();
+	         
+	         response.setContentType("text/html; charset=UTF-8");
+	         PrintWriter out = response.getWriter();
+	         out.println("<script>alert('네이버 간편 로그인은 꼭 네이버에서도 로그아웃 부탁드립니다.'); location.href='/';</script>");
+	         out.flush();
+	         
+	      }
+	      
+	      
+	      session.invalidate();
+	      return "redirect:/";
+	       
+	   }
 
-	}	
+
+	   @RequestMapping(value ="/withdraw",  method = RequestMethod.GET) //회원탈퇴
+	   public String withdraw() throws Exception {
+	      MemberDTO dto = (MemberDTO) session.getAttribute("loginInfo");
+	      String id = dto.getMem_id();
+	      int type = dto.getMem_join_type();
+	      
+	      
+	      if(type == 1) {
+	         mservice.withdraw(id);
+	         session.invalidate();
+	         return "redirect:/";
+	         
+	      }else if(type == 2) {
+	         
+	         KakaoAPIService ka = new KakaoAPIService();
+	         
+	         mservice.withdraw(id);
+	          ka.kakaoWithdraw((String)session.getAttribute("access_Token"));
+	          session.invalidate();
+	         return "redirect:/";
+	      }
+	      
+	       session.invalidate();
+	      return "redirect:/";
+	      
+
+	   }   
 	
 		
 }
