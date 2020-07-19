@@ -91,7 +91,7 @@
 	</update>
 	
 	<insert id="updateSysPoint">
-	      insert into reservation_point (reservation_point_seq, reservation_seq, reservation_point) values (reservation_point_seq.nextval,#{reservation_seq}, #{rsv_point})
+		insert into reservation_point (reservation_point_seq, reservation_seq, reservation_point) values (reservation_point_seq.nextval,#{reservation_seq}, #{rsv_point})
 	</insert>
 	
 	<select id="selectWaitlist" resultType="kh.pet.dto.WaitlistDTO">

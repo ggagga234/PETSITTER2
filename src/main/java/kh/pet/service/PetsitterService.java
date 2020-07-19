@@ -19,11 +19,16 @@ public class PetsitterService {
 	}
 	
 	public float update_star(ReviewDTO rwdto)throws Exception{
+		System.out.println("별"+rwdto.getRw_star());
 		return psdao.update_star(rwdto);
 	}
 	
 	public PetsitterDTO selectById(String ps_id)throws Exception {
-		//System.out.println("�젙留� 媛��옄 : "+psdao.selectById(ps_id).getPs_license_img());
 		return psdao.selectById(ps_id);
+	}
+	
+	public int selectCntId(String ps_id)throws Exception {
+		System.out.println("ps_id:"+ps_id);
+		return psdao.selectCntId(ps_id);
 	}
 }

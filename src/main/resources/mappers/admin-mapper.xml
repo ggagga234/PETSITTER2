@@ -111,7 +111,9 @@
 		select * from stop_mem where stop_day = 0
 	</select>
 	
-	
+	<select id="stop_data" resultType="kh.pet.dto.Stop_memberDTO">
+		select * from stop_mem where stop_id = #{value}
+	</select>
 	
 	<!--reservation management -->
 	

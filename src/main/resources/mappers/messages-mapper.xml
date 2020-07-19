@@ -52,8 +52,8 @@
 	</insert>
 	
 
-	<select id="search" resultType="int">
-		select count(*) from mem where id = #{value} 
+	<select id="searchmem" resultType="int">
+		select count(*) from member where mem_id = #{value} 
 	</select>
 	
 	<select id="sendview" resultType="kh.pet.dto.MessageDTO" resultMap="sendmessage">
@@ -65,7 +65,7 @@
 	</select>
 	
 	<update id="recievefirstView">
-		update recieve_message set RMSG_STATUS = '안 읽음' where RMSG_STATUS = 'N' and rmsg_reciever=#{value}
+		update recieve_message set RMSG_STATUS = '안 읽음' where RMSG_STATUS='NEW' and rmsg_reciever=#{value}
 	</update>
 	
 	<update id="recieveSecendView">

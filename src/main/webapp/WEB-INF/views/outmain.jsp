@@ -581,7 +581,7 @@ $("#login").on("click",function(){
 			dataType : "json",
 			success: function(data){
 				var check = data.result;
-				
+				var time = data.time;
 				if(check == 0 ){
 					alert('이메일 인증이 필요합니다. 이메일을 확인해주세요.');				
 					location.reload();
@@ -593,6 +593,10 @@ $("#login").on("click",function(){
 					location.reload();
 				}
 				else if(check == 3){
+					alert('해당 아이디는 '+time+'일 간 정지 중입니다.');
+					location.reload();
+				}
+				else if(check == 4){
 					alert('해당 아이디는 영구 정지 상태입니다.');
 					location.reload();
 				}
@@ -621,9 +625,22 @@ $("#login").on("click",function(){
 	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
 	          location.href="/petsitter/outputSingle";
 	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
-	          location.href="/petsitter/petsitter_register_form";
-	       } 
-	     });
+	    	   $.ajax({
+	    		   url:"/petsitter/checkRegister?ps_id=${sessionScope.loginInfo.mem_id}",
+	    		   type:"POST",
+	    		   success:function(result){
+	    			   if(result==1){
+	    				   alert("${sessionScope.loginInfo.mem_id}님의 펫시터 지원서를 확인 중입니다.");
+	    			   } else {
+	    				   location.href="/petsitter/petsitter_register_form";
+	    			   }
+	    		   }
+	    		 })
+	      	}
+	    })
+	    	   
+	       
+	    
 			
 	</script>
 

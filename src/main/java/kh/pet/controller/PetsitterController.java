@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.pet.dto.MemberDTO;
@@ -73,5 +74,12 @@ public class PetsitterController {
 
 		model.addAttribute("petsitterInfo",psdto);
 		return "/petsitter_board/petsitter/petsitter_register_view";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/checkRegister")
+	public int checkRegister(String ps_id)throws Exception{
+		System.out.println("ps_id controller:"+ps_id);
+		return psservice.selectCntId(ps_id);
 	}
 }
