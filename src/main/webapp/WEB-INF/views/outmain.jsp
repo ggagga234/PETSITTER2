@@ -105,7 +105,7 @@
 
 							<c:choose>
 								<c:when
-									test="${loginInfo.mem_id eq '관리자' && loginInfo.mem_address1 eq 'admin_address'}">
+									test="${loginInfo.mem_id eq '관리자' && loginInfo.mem_name eq '관리자'}">
 									<a href="/admin/adminindex"><img
 										src="resources/images/dogss.png"
 										style="width: 250px; height: 60px;"></a>
@@ -211,7 +211,7 @@
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 
-										<li><a href="/member/login"><span>포인트 충전소<i
+										<li><a href="/mypage/Introduction"><span>포인트 충전소<i
 													class="icofont-money icofont-1x"
 													style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
 										<li><a href="/mypage/mypage"><span>MY PAGE<i

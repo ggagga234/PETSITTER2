@@ -113,7 +113,7 @@
 						<nav class="site-navigation position-relative text-right"
 							role="navigation">
 							<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-								<li><a href="/member/login"><span>포인트 충전소<i
+								<li><a href="/mypage/Introduction"><span>포인트 충전소<i
 											class="icofont-money icofont-1x"
 											style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
 								<li><a href="/mypage/mypage"><span>MY PAGE<i

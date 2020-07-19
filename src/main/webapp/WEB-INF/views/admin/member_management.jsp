@@ -23,23 +23,25 @@
 		<script src="/resources/admin/admin_js/admin.js"></script>
     </head>
     <body>
-        <div class="wrap row bg-light">
-            <div class="col-12 ">
-                <div class="row " style="margin: 5px;">
-                	<div class="col-5 d-none d-sm-block" style="height: 40px;">
-						<img src="/resources/images/dogss.png" alt="" style="height: 100%">
-					</div>
-                    <div class="col-5" id="nav">
-                        <input class="btn btn-outline-primary" type="button" value="Menu" id="navmenuon">
-                        <input type="button" class="btn btn-outline-primary" value="닫기" id="navmenuoff" style="display: none">
-                    </div>
-                    <div class="col" style="text-align: right;">
-                        <button class="btn btn-outline-primary home">홈으로</button>
-                        <button class="btn btn-outline-primary logout">로그 아웃</button>
-                    </div>
-                </div>
-            </div>
-            <div class="lside col-12 bg-primary" id="navmenu">
+       <div class="wrap row bg-light">
+		<div class="col-12 ">
+			<div class="row " style="margin: 5px;">
+				<div class="col-5 d-none d-sm-block" style="height: 40px;">
+					<img src="/resources/images/dogss.png" alt="" style="height: 100%">
+				</div>
+				<div class="col-5" id="nav">
+					<input class="btn btn-outline-primary" type="button" value="Menu"
+						id="navmenuon"> 
+						<input type="button" class="btn btn-outline-primary" value="닫기"
+						id="navmenuoff" style="display: none">
+				</div>
+				<div class="col" style="text-align: right;">
+					<button class="btn btn-outline-primary home">홈으로</button>
+					<button class="btn btn-outline-primary logout">로그 아웃</button>
+				</div>
+			</div>
+		</div>
+		<div class="lside col-12 bg-primary" id="navmenu">
 			<div class="row">
 				<!--사이드 메뉴바-->
 				<div class="col-12 smenu main">관리자 페이지</div>
@@ -56,13 +58,9 @@
 				<hr>
 				<div class="col-12 smenu declaration">신고 내역 관리</div>
 				<hr>
-				<div class="col-12 smenu cash">현금 전환 관리</div>
-				<hr>
 				<div class="col-12 smenu pass">비밀번호 관리</div>
 				<hr>
 				<div class="col-12 smenu mess">메세지 관리</div>
-				<hr>
-				<div class="col-12 smenu chat">QnA 채팅 관리</div>
 			</div>
 		</div>
 		<div class="lside col-sm-3 col-lg-2 d-none d-sm-block bg-primary "
@@ -83,13 +81,9 @@
 				<hr>
 				<div class="col-12 smenu declaration">신고 내역 관리</div>
 				<hr>
-				<div class="col-12 smenu cash">현금 전환 관리</div>
-				<hr>
 				<div class="col-12 smenu pass">비밀번호 관리</div>
 				<hr>
 				<div class="col-12 smenu mess">메세지 관리</div>
-				<hr>
-				<div class="col-12 smenu chat">QnA 채팅 관리</div>
 				<hr>
 				<div class="col-12 smenu hide" id="hide">◀</div>
 				<hr>
