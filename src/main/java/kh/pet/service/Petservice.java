@@ -39,8 +39,8 @@ public class Petservice {
 		return dao.gettime(time);
 	}
 	
-	public String getpettype(String petname) throws Exception {
-		return dao.getpettype(petname);
+	public String getpettype(Mypet_regDTO pdto) throws Exception {
+		return dao.getpettype(pdto);
 	}
 
 	public MemboardDto bopet(String seq) throws Exception {

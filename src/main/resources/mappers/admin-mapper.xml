@@ -104,14 +104,16 @@
 	</update>
 	
 	<update id="mem_stop_solve">
-		
+		update member set  mem_status = 'YES' where mem_id = #{value}
 	</update>
 	
 	<select id="mem_stop_solve_search" resultType="kh.pet.dto.Stop_memberDTO">
 		select * from stop_mem where stop_day = 0
 	</select>
 	
-	
+	<select id="stop_data" resultType="kh.pet.dto.Stop_memberDTO">
+		select * from stop_mem where stop_id = #{value}
+	</select>
 	
 	<!--reservation management -->
 	

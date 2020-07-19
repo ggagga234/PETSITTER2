@@ -63,6 +63,12 @@ public class HomeController {
 		return "member/signup";
 	}
 	
+	@RequestMapping("team")
+	public String team() throws Exception {
+		
+		return "/mb_board/board_about";
+	}
+	
 	
 	
 	//예아 ㅇ0ㅇ

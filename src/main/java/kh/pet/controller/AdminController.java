@@ -251,7 +251,6 @@ public class AdminController {
 			cpage = 1;
 		}
 		List<MemberDTO> mdto = admin_service.black_member(cpage);
-		System.out.println(mdto.get(0).getMem_id());
 		String navi = admin_service.PagNavi(cpage,"black");
 		m.addAttribute("memberlist",mdto);	
 		m.addAttribute("navi",navi);
@@ -284,7 +283,6 @@ public class AdminController {
 		}
 		else if(boardtype.contentEquals("free")) {
 			List<CommunityDTO> boardlist = admin_service.c_board(boardtype, cpage);
-			System.out.println(boardlist.get(0).getCu_seq());
 			navi = admin_service.PagNavi(cpage, boardtype);
 
 			m.addAttribute("list", boardlist);

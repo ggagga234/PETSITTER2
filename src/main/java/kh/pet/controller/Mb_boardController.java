@@ -65,7 +65,7 @@ public class Mb_boardController {
 		m.addAttribute("tmp",tmp);
 		m.addAttribute("list", list);
 		m.addAttribute("add", add);
-		return "mb_board/board_register";
+		return "/mb_board/board_register";
 	}
 
 
@@ -99,7 +99,7 @@ public class Mb_boardController {
 		for(String petname : petnamearr) {
 			pdto.setPet_name(petname);
 			pdto.setMaster_id(mdto.getMem_id());
-			pettype.add(service.getpettype(petname));	
+			pettype.add(service.getpettype(pdto));	
 		}
 
 		if(mlist.getMb_petphoto() != null) {
@@ -121,7 +121,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modfilist")
@@ -134,17 +134,13 @@ public class Mb_boardController {
 		MemboardDto bopet = service.bopet(mbdto.getMb_seq());		
 		String[] bopetarr = bopet.getMb_pet_name().split(",");
 		String[] servicearr = mlist.getMb_service().split(",");
-		String[] petnamearr = mlist.getMb_pet_name().split(",");
 		List<String> pettype = new ArrayList<String>();
 		List<String> services = new ArrayList<String>();
 		for(String boptype : bopetarr) {
-			pettype.add(service.getpettype(boptype));			
-		}
-
-		for(String petname : petnamearr) {
-			pdto.setPet_name(petname);
+			pdto.setPet_name(boptype);
 			pdto.setMaster_id(mdto.getMem_id());
-		}	
+			pettype.add(service.getpettype(pdto));			
+		}
 		if(mlist.getMb_petphoto() != null) {
 			String[] photoarr = mlist.getMb_petphoto().split(",",-1);
 			mlist.setPhoto(photoarr);
@@ -164,7 +160,7 @@ public class Mb_boardController {
 		m.addAttribute("pettype", pettype);
 		m.addAttribute("id", mdto.getMem_id());
 		m.addAttribute("alltime",alltime);
-		return "mb_board/board";
+		return "/mb_board/board";
 	}
 
 	@RequestMapping("modified")
@@ -224,7 +220,7 @@ public class Mb_boardController {
 		m.addAttribute("petnames", petnames);	
 		m.addAttribute("services", services);
 
-		return "mb_board/board_Modified";
+		return "/mb_board/board_Modified";
 	}
 
 	@RequestMapping("modified_con")
@@ -254,7 +250,7 @@ public class Mb_boardController {
 		m.addAttribute("id",mdto.getMem_id());
 		m.addAttribute("navi", navi);
 		m.addAttribute("mblist", mblist);
-		return "mb_board/board_list";
+		return "/mb_board/board_list";
 	}
 
 	@RequestMapping("deleteboard")
@@ -262,7 +258,6 @@ public class Mb_boardController {
 		service.deleteboard(mbdto);
 		return "redirect:mb_board";
 	}
-
 
 
 

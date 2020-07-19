@@ -54,9 +54,9 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/member/login"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/member/login"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/member/login"><span>메시지<i class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
+										<li><a href="/mypage/Introduction"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메시지<i class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
 										<li><a href="/member/logout"><span>LOGOUT</span></a></li>
 									</ul>
 								</nav>
@@ -65,13 +65,13 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span
+										<li><a href="/team"><span
 												style="font-size: 20px">팀 소개</span></a></li>
-										<li><a href="/mb/mb_board?cpage=1"><span
+										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
 										<li><a href="/board/outputList"><span
 												style="font-size: 20px">위탁 돌봄</span></a></li>
-										<li><a href="/member/login"><span
+										<li><a href="/community/list"><span
 												style="font-size: 20px">게시판</span></a></li>
 									</ul>
 								</nav>
@@ -149,7 +149,7 @@
 					<div class="col-lg-4">
 						<p class="mb-0">
 							<a href="signup.html"
-								class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
+								id="register_btn" class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
 						</p>
 					</div>
 				</div>
@@ -184,5 +184,16 @@
 	<script src="/resources/main/js/aos.js"></script>
 	<script src="/resources/main/js/rangeslider.min.js"></script>
 	<script src="/resources/main/js/main.js"></script>
+	<script>
+	$("#register_btn").on("click",function(){
+	       if(${sessionScope.loginInfo.mem_type == '2'}){
+	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
+	          location.href="/petsitter/outputSingle";
+	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
+	          location.href="/petsitter/petsitter_register_form";
+	       } 
+	     });
+	</script>
+	
 </body>
 </html>

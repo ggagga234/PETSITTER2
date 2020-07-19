@@ -96,7 +96,7 @@ label {
                         <nav class="site-navigation position-relative text-right"
                            role="navigation">
                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                              <li><a href="/admin/adminindex"><span>팀소개</span></a></li>
+                              <li><a href="/team"><span>팀소개</span></a></li>
                               <li><a href="#introduce"><span>서비스소개</span></a></li>
                               <li><a data-toggle="modal" href="#login"><span>로그인</span></a></li>
                               <li><a href="/member/signup"><span>회원가입</span></a></li>
@@ -194,7 +194,7 @@ label {
                         <nav class="site-navigation position-relative text-right"
                            role="navigation">
                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                              <li><a href="/admin/adminindex"><span
+                              <li><a href="/team"><span
                                     style="font-size: 20px">팀 소개</span></a></li>
                               <li><a href="/mb/mb_board?cpage=1"><span
                                     style="font-size: 20px">방문 돌봄</span></a></li>

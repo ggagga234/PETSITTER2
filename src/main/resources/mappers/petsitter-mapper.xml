@@ -14,6 +14,10 @@
 		select * from petsitter where ps_id=#{ps_id}
 	</select>
 	
+	<select id="selectCntId" resultType="int">
+		select count(*) from petsitter where ps_id = #{ps_id}
+	</select>
+	
 	<update id="update_star">
 		update petsitter set ps_star = ps_star + #{rw_star} where ps_id = #{rw_petsitter_id}
 	</update>

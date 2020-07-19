@@ -42,9 +42,9 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/member/login"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/member/login"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-										<li><a href="/member/login"><span>메시지<i class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
+										<li><a href="/mypage/Introduction"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메시지<i class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
 										<li><a href="/member/logout"><span>LOGOUT</span></a></li>
 									</ul>
 								</nav>
@@ -53,7 +53,7 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span
+										<li><a href="/team"><span
 												style="font-size: 20px">팀 소개</span></a></li>
 										<li><a href="/mb/mb_board?cpage=1"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
@@ -74,14 +74,14 @@
 			</div>
 		</header>
 
-   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/resources/images/head3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/resources/images/head5-1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
             <div class="row justify-content-center">
               <div class="col-md-8 text-center">
-                <h1>Jones Grill &amp; Restaurants</h1>
-                <p class="mb-0">Don St, Brooklyn, New York</p>
+                <h1>I am best Petsitter <br> I love Mypet</h1>
+                <p class="mb-0"><i class="icofont-paw"></i>${sessionScope.loginInfo.mem_id }님 도와줄개요<i class="icofont-paw"></i></p>
               </div>
             </div>
           </div>

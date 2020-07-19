@@ -93,7 +93,7 @@
                         <nav class="site-navigation position-relative text-right"
                            role="navigation">
                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                              <li><a href="/admin/adminindex"><span>팀소개</span></a></li>
+                              <li><a href="/team"><span>팀소개</span></a></li>
                               <li><a href="#introduce"><span>서비스소개</span></a></li>
                               <li><a data-toggle="modal" href="#login1"><span>로그인</span></a></li>
                               <li><a href="/member/signup"><span>회원가입</span></a></li>
@@ -177,21 +177,18 @@
                         <nav class="site-navigation position-relative text-right"
                            role="navigation">
                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-
-                              <li><a href="/mypage/Introduction"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-                              <li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
-                              <li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;">메세지<i
-                                    class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></a></li>
-
-                              <li><a href="/member/logout"><span>LOGOUT</span></a></li>
-                           </ul>
+										<li><a href="/mypage/Introduction"><span>포인트 충전소<i class="icofont-money icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/mypage/mypage"><span>MY PAGE<i class="icofont-live-messenger icofont-1x" style="color: #17a2b8;padding-right: 8px"></i></span></a></li>
+										<li><a href="/message/recievelist" onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메시지<i class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
+										<li><a href="/member/logout"><span>LOGOUT</span></a></li>
+									</ul>
                         </nav>
                      </div>
                      <div class="col-12 col-md-12 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right"
                            role="navigation">
                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                              <li><a href="/admin/adminindex"><span
+                              <li><a href="/team"><span
                                     style="font-size: 20px">팀 소개</span></a></li>
                               <li><a href="/mb/mb_board?cpage=1"><span
                                     style="font-size: 20px">방문 돌봄</span></a></li>

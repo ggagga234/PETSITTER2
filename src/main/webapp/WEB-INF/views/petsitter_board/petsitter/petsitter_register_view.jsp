@@ -71,24 +71,28 @@ ul>li, input {
 			$("input[name='ps_gender']").each(function(index, item) {
 				if ('${petsitterInfo.ps_gender}' == $(item).val()) {
 					$(this).prop("checked", true);
+					$("input[name='ps_gender']").prop('disabled',true);
 				}
 			});
 
 			$("input[name='ps_resident_type']").each(function(index, item) {
 				if ('${petsitterInfo.ps_resident_type}' == $(item).val()) {
 					$(this).prop("checked", true);
+					$("input[name='ps_resident_type']").prop('disabled',true);
 				}
 			});
 
 			$("input[name='ps_drive']").each(function(index, item) {
 				if ('${petsitterInfo.ps_drive}' == $(item).val()) {
 					$(this).prop("checked", true);
+					$("input[name='ps_drive']").prop('disabled',true);
 				}
 			});
 
 			$("input[name='ps_license']").each(function(index, item) {
 				if ('${petsitterInfo.ps_license}' == $(item).val()) {
 					$(this).prop("checked", true);
+					$("input[name='ps_license']").prop('disabled',true);
 				}
 			});
 
@@ -100,6 +104,7 @@ ul>li, input {
 				for (var i = 0; i < listarr.length; i++) {
 					if (listarr[i] == $(item).val()) {
 						$(this).prop("checked", true);
+						$("input[name='ps_service']").prop('disabled',true);
 					}
 				}
 			});
@@ -127,7 +132,7 @@ ul>li, input {
 							<div class="mb-3">
 								<label for="ps_age">나 이</label> <input type="text"
 									class="form-control" id="ps_age" name="ps_age"
-									value="${petsitterInfo.ps_age}">
+									value="${petsitterInfo.ps_age}" readonly>
 							</div>
 							<div class="mb-3">
 								<label for="ps_gender_F">성 별</label>
@@ -181,6 +186,7 @@ ul>li, input {
 										value="N"> <label for="ps_license_N"><span></span>NO</label>
 								</div>
 							</div>
+						<c:if test="${petsitterInfo.ps_license eq Y}">
 							<div class="mb-3">
 								<label for="ps_img">자격증 이미지 첨부</label>
 								<div class="filebox">
@@ -188,6 +194,8 @@ ul>li, input {
 										style="width: 300px; height: 300px;">
 								</div>
 							</div>
+						</c:if>
+							
 							<div class="mb-3">
 								<label for="div_ps_myself">내 소개글</label>
 								<div id="div_ps_myself"
@@ -221,6 +229,20 @@ ul>li, input {
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="btns" style="text-align:center;">
+						<button id="tolist" class="btn btn-primary text-#878786 btn-md px-5 font-weight-bold btn-md-block" style="margin-right:10px;">메인으로</button>
+						<button id="toupdate" class="btn btn-primary text-#878786 btn-md px-5 font-weight-bold btn-md-block">수정하기</button>
+							<script>
+								$(function(){
+									$("#tolist").on("click",function(){
+										location.href="/";
+									});
+									$("#toupdate").on("click",function(){
+										location.href="/";
+									});
+								})
+							</script>
 					</div>
 				</div>
 			</div>

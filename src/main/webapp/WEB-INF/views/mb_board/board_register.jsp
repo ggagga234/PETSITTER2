@@ -113,13 +113,14 @@
 						<nav class="site-navigation position-relative text-right"
 							role="navigation">
 							<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-								<li><a href="/member/login"><span>포인트 충전소<i
+								<li><a href="/mypage/Introduction"><span>포인트 충전소<i
 											class="icofont-money icofont-1x"
 											style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
-								<li><a href="/member/login"><span>MY PAGE<i
+								<li><a href="/mypage/mypage"><span>MY PAGE<i
 											class="icofont-live-messenger icofont-1x"
 											style="color: #17a2b8; padding-right: 8px"></i></span></a></li>
-								<li><a href="/member/login"><span>메시지<i
+								<li><a href="/message/recievelist"
+									onclick="window.open(this.href,'_blank','width=600, height=600, scrollbars=yes'); return false;"><span>메시지<i
 											class="icofont-envelope icofont-1x" style="color: #17a2b8"></i></span></a></li>
 								<li><a href="/member/logout"><span>LOGOUT</span></a></li>
 							</ul>
@@ -129,13 +130,13 @@
 						<nav class="site-navigation position-relative text-right"
 							role="navigation">
 							<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-								<li><a href="/admin/adminindex"><span
+								<li><a href="/team"><span
 										style="font-size: 20px">팀 소개</span></a></li>
-								<li><a href="/mb/mb_board?cpage=1"><span
+								<li><a href="/mb/mb_board"><span
 										style="font-size: 20px">방문 돌봄</span></a></li>
 								<li><a href="/board/outputList"><span
 										style="font-size: 20px">위탁 돌봄</span></a></li>
-								<li><a href="/member/login"><span
+								<li><a href="/community/list"><span
 										style="font-size: 20px">게시판</span></a></li>
 							</ul>
 						</nav>
@@ -380,14 +381,7 @@
 													<div data-brackets-id='37'
 														style="display: flex; flex-direction: row; align-items: center; margin-right: 8px">
 														<p data-brackets-id='38'
-															style="font-size: 13px; line-height: 18px; color: #81DAD6">2시간당</p>
-
-														<div data-brackets-id='39'
-															style="width: 1px; height: 15px; background-color: #ECEDF0; margin-left: 5px; margin-right: 5px">
-														</div>
-
-														<p data-brackets-id='40'
-															style="font-size: 13px; line-height: 18px; color: #81DAD6">AM,PM</p>
+															style="font-size: 13px; line-height: 18px; color: #81DAD6">1시간당</p>
 													</div>
 												</div>
 											</div>
@@ -409,11 +403,6 @@
 														<p data-brackets-id='50'
 															style="font-size: 14px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">50포인트</p>
 													</div>
-													<div data-brackets-id='51'
-														style="display: flex; flex-direction: column; align-items: center; width: 62px">
-														<p data-brackets-id='52'
-															style="font-size: 12px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">150포인트</p>
-													</div>
 												</div>
 											</div>
 											<div data-brackets-id='53'
@@ -432,11 +421,6 @@
 														style="display: flex; align-items: center; width: 62px; flex-direction: column; margin-right: 12px">
 														<p data-brackets-id='60'
 															style="font-size: 14px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">60포인트</p>
-													</div>
-													<div data-brackets-id='61'
-														style="display: flex; flex-direction: column; align-items: center; width: 62px">
-														<p data-brackets-id='62'
-															style="font-size: 12px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">200포인트</p>
 													</div>
 												</div>
 											</div>
@@ -458,24 +442,6 @@
 														<p data-brackets-id='70'
 															style="font-size: 14px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">65포인트</p>
 													</div>
-													<div data-brackets-id='71'
-														style="display: flex; flex-direction: column; align-items: center; width: 62px">
-														<p data-brackets-id='72'
-															style="font-size: 12px; letter-spacing: 0.5px; line-height: 20px; color: #81DAD6">250포인트</p>
-													</div>
-												</div>
-											</div>
-											<div data-brackets-id='73'
-												style="width: 310px; height: 1px; background-color: #EBEBEB; margin: 32px 0"></div>
-											<div data-brackets-id='74'
-												style="display: flex; flex-direction: row; justify-content: space-between">
-												<p data-brackets-id='75'
-													style="font-family: Noto Sans KR, sans-serif; font-size: 14px; color: #81DAD6">풀타임
-													09:00~20:00</p>
-												<div data-brackets-id='76'
-													style="display: flex; flex-direction: column; justify-content: space-between">
-													<p data-brackets-id='77'
-														style="font-size: 13px; color: #81DAD6">400포인트</p>
 												</div>
 											</div>
 										</div>
@@ -503,7 +469,7 @@
 					<div class="col-lg-4">
 						<p class="mb-0">
 							<a href="signup.html"
-								class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터
+								id="register_btn" class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터
 								지원하기</a>
 						</p>
 					</div>
@@ -642,7 +608,7 @@
 			$(".etimelist  li").on("click", function() {
 				edata = $(this).data("time");
 				if (dataTime >= edata) {
-					alert("다시선택하세요");
+					alert("시간을 다시 선택해주세요");
 					$(".etime").html("끝시간");
 				} else {
 					$("#stime").val($(".stime").html());
@@ -706,7 +672,17 @@
 				return false;
 			}
 		})
+		
+		$("#register_btn").on("click",function(){
+	       if(${sessionScope.loginInfo.mem_type == '2'}){
+	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
+	          location.href="/petsitter/outputSingle";
+	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
+	          location.href="/petsitter/petsitter_register_form";
+	       } 
+	     });
 	</script>
+	
 
 </body>
 

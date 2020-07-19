@@ -99,6 +99,7 @@ public class AdminService {
 		dto.setMsg_contents("승인되었습니다. 지금부터는 펫 시터로 활동이 가능합니다.");
 		dto.setMsg_sender("관리자");
 		mdao.sendMessage(dto);
+		mdao.recieveMessage(dto);
 		return dao.petaccept(id);
 	}
 
@@ -110,7 +111,7 @@ public class AdminService {
 		dto.setMsg_contents("신청이 거절되었습니다. 규약을 잘 읽어보고 다시 신청해주시길 바랍니다.");
 		dto.setMsg_sender("관리자");
 		mdao.sendMessage(dto);
-		System.out.println(id);
+		mdao.recieveMessage(dto);
 		return dao.petcencel(id);
 	}
 	
@@ -160,6 +161,10 @@ public class AdminService {
 		dao.mem_stop_count();
 		List<Stop_memberDTO> list = dao.mem_stop_solve_search();
 		dao.mem_stop_solve(list);
+	}
+	
+	public Stop_memberDTO stop_memdata(String id) {
+		return dao.stop_data(id);
 	}
 	
 	

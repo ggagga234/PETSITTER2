@@ -49,13 +49,9 @@
 				<hr>
 				<div class="col-12 smenu declaration">신고 내역 관리</div>
 				<hr>
-				<div class="col-12 smenu cash">현금 전환 관리</div>
-				<hr>
 				<div class="col-12 smenu pass">비밀번호 관리</div>
 				<hr>
 				<div class="col-12 smenu mess">메세지 관리</div>
-				<hr>
-				<div class="col-12 smenu chat">QnA 채팅 관리</div>
 			</div>
 		</div>
 		<div class="lside col-sm-3 col-lg-2 d-none d-sm-block bg-primary "
@@ -76,13 +72,9 @@
 				<hr>
 				<div class="col-12 smenu declaration">신고 내역 관리</div>
 				<hr>
-				<div class="col-12 smenu cash">현금 전환 관리</div>
-				<hr>
 				<div class="col-12 smenu pass">비밀번호 관리</div>
 				<hr>
 				<div class="col-12 smenu mess">메세지 관리</div>
-				<hr>
-				<div class="col-12 smenu chat">QnA 채팅 관리</div>
 				<hr>
 				<div class="col-12 smenu hide" id="hide">◀</div>
 				<hr>

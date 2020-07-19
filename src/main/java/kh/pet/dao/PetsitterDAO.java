@@ -27,8 +27,9 @@ public class PetsitterDAO {
 	
 	public int update_star(ReviewDTO rwdto) throws Exception{
 		float rw_star = rwdto.getRw_star();
+		System.out.println("별dao:"+rw_star);
 		String rw_petsitter_id = rwdto.getRw_petsitter_id();
-		Map<String, Object> param =new HashMap();
+		Map<String, Object> param =new HashMap<>();
 		param.put("rw_petsitter_id",rw_petsitter_id);
 		param.put("rw_star",rw_star);
 		return mybatis.update("Petsitter.update_star", param);
@@ -36,5 +37,9 @@ public class PetsitterDAO {
 	
 	public PetsitterDTO selectById(String ps_id) throws Exception{
 		return mybatis.selectOne("Petsitter.selectById",ps_id);
+	}
+	
+	public int selectCntId(String ps_id) throws Exception{
+		return mybatis.selectOne("Petsitter.selectCntId",ps_id);
 	}
 }

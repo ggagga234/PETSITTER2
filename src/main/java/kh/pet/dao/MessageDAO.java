@@ -40,7 +40,7 @@ public class MessageDAO {
 	}
 	
 	public int searchMem(String reciver) {
-		return mybatis.selectOne("Messages.search",reciver);
+		return mybatis.selectOne("Messages.searchmem",reciver);
 	}
 	
 	public MessageDTO sendView(int seq) {

@@ -164,14 +164,14 @@ public class PetsitterboardController {
 		return psbservice.selectCnt(psb_writer);
 	}
 	
-	//waitlist�� ���� �ø���
+	//waitlist占쏙옙 占쏙옙占쏙옙 占시몌옙占쏙옙
 	@ResponseBody
 	@RequestMapping(value="/waitList", method=RequestMethod.POST)
 	public int waitList(WaitlistDTO wldto)throws Exception{
 		return psbservice.insertwaitlist(wldto);
 	}
 	
-	//�ش� �Խù��� ������ �ִ��� Ȯ��
+	//占쌔댐옙 占쌉시뱄옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙占쏙옙 확占쏙옙
 	@ResponseBody
 	@RequestMapping(value="/checkExistReservation", method=RequestMethod.POST)
 	public int checkExistReservation (String psb_seq) throws Exception {
@@ -190,10 +190,10 @@ public class PetsitterboardController {
 //		return "redirect:outputList";
 //	}
 	
-	// �ǽð� ����Ʈ���� �����ֱ�
+	// 占실시곤옙 占쏙옙占쏙옙트占쏙옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
 	@ResponseBody
 	@RequestMapping(value="/selectPrice", method=RequestMethod.POST)
-	public List<Integer> selectPrice(@RequestParam(value="timearr[]") List<String> timearr,@RequestParam(value="typearr[]")List<String> typearr) throws Exception{
+	public List<Integer> selectPrice(@RequestParam(value="timearr[]",required=false) List<String> timearr,@RequestParam(value="typearr[]",required=false)List<String> typearr) throws Exception{
 
 		ArrayList<Object> list = new ArrayList<>();
 
@@ -208,21 +208,22 @@ public class PetsitterboardController {
 	return psbservice.selectPrice(list);
 	}
 	
-	//������� ��ư ������  reserve_seq�� �޾Ƽ� AJAX�� ��� â ����ֱ�
+	//占쏙옙占쏙옙占쏙옙占� 占쏙옙튼 占쏙옙占쏙옙占쏙옙  reserve_seq占쏙옙 占쌨아쇽옙 AJAX占쏙옙 占쏙옙占� 창 占쏙옙占쏙옙殮占�
 	@ResponseBody
 	@RequestMapping("/cancelReserve")
 	public int cancelReserve(String reserve_seq)throws Exception{
 		return psbservice.cancelReserve(reserve_seq);
 	}
 	
-	//������ ��¥�� ������ ��������  waitlist��  ��ϵǱ� �� Ȯ��
+	//占쏙옙占쏙옙占쏙옙 占쏙옙짜占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙  waitlist占쏙옙  占쏙옙溝풉占� 占쏙옙 확占쏙옙
 	@ResponseBody
 	@RequestMapping(value="/checkAvailableReserve", method=RequestMethod.POST)
 	public boolean checkAvailableReserve (CurrentPickDTO pickdto)throws Exception{
 		boolean result = psbservice.checkAvailableReserve(pickdto);
-		//System.out.println("��"+result);
+		//System.out.println("占쏙옙"+result);
 		return result;
 	}
+	
 	
 	@RequestMapping("/board_confirmReserve")
 	public String board_confirmReserve(Model model,String mem_id)throws Exception{

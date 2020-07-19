@@ -273,9 +273,10 @@ ul>li, input {
 		         })
 		         
 		         
+
 		         // 포인트 계산
 		        	$(".price_item").on("change",function(){
-		        		if( $("input[name='rsv_pet_name']:checked").val() != "" && $("#rsv_start_day").val() != "" &&  $("#rsv_end_day").val() != "" && $("input[name='rsv_time']:checked").val() != ""){
+		        		if( $("input[name='rsv_pet_name']:checked").val() != "" && $("#rsv_start_day").val() != "" && $("#rsv_end_day").val() != "" && $("input[name='rsv_time']:checked").val() != ""){
 		        		//if(($("input[name='rsv_pet_name']:checked").val() && $("#rsv_start_day").val()&&$("#rsv_end_day").val() && $("input[name='rsv_time']:checked").val())!=null){
 		        			var diffDate_1 = new Date( $("#rsv_start_day").val());
 		        			var diffDate_2 = new Date($("#rsv_end_day").val());
@@ -314,17 +315,51 @@ ul>li, input {
 			        		 }
 			        	 })
 			        		
-		        		}
-		        	});
-		         
-		         
-		         $("#waitList").submit(function(){
+		        		} else{  $("#rsv_point").val(""); }
+		        	})
+		        
+		       // 신청하기 버튼
+		        $("#waitList").submit(function(){
 		        	 check();
 		        	 return false;
 		         })
-		         
-			});
-		
+		       
+		       // 댓글 확인
+		         $("#submit_comment").on("click",function(){
+         			var form ={
+         					rw_contents:$("#rw_contents").val(),
+         					rw_writer: "${ sessionScope.loginInfo.mem_id}",
+         					rw_star:$("#rw_star").val(),
+         					rw_petsitter_id:"${tot_Info.psb_writer}",
+         					rw_parent_seq: "${tot_Info.psb_seq}"
+         			}
+         			
+         			if($("#rw_contents").val()=="" ){ 
+         				alert("리뷰 내용을 입력해주세요.");
+         			}else if($("#rw_star").val()==""){
+         				alert("별점을 체크해주세요.");
+         			} else {
+         				$.ajax({
+             				url:"/review/insertProc",
+             				type:"POST",
+             				data:form,
+             				success:function(data){
+             					
+             					$(".star").removeClass("on");
+                     			$("#rw_contents").val("");
+                     			$("#contents").val("");
+                     			alert("댓글이 등록되었습니다.");
+                     			displayReview();
+             				},
+             				fail:function(){
+             					alert("insertProc err");
+             				}
+             			});
+         			}
+         			
+         		});
+		     });
+		        
 			// submit 전에 검사 check
 			function check() {
 				if(!$("input:checkbox[name='rsv_pet_name']").is(":checked")){
@@ -371,12 +406,12 @@ ul>li, input {
 					dataType:"json",
 					data:form,
 					success : function(data){
-						alert(data);
+						//alert(data);
 						console.log(form);
 						console.log(form.rsv_pet_name);
 						
 						if(data==true){
-							alert($("#rsv_point").val());
+							alert($("#rsv_point").val()+"포인트 차감!");
 							if($("#rsv_point").val()<=${myPoint}){
 								$.ajax({
 									url:"/board/waitList",
@@ -384,7 +419,7 @@ ul>li, input {
 									dataType:"json",
 									data:reserve,
 									success : function(data){
-										alert("성공");
+										alert("예약 매칭-ing");
 										location.href = "/board/board_confirmReserve";
 									},
 									error :function(){
@@ -466,7 +501,7 @@ ul>li, input {
 				<div class="container">
 					<div class="d-block d-md-flex listing-horizontal">
 						<div class="lh-content" style="text-align:center;">
-							<h4 class="font-weight-light text-info">기간이 지난 게시글입니다.</h4>
+							<h4 class="font-weight-light text-info">볼 수 없는 게시글입니다</h4>
 							
 						</div>
 					</div>
@@ -480,17 +515,18 @@ ul>li, input {
 			<div class="site-section">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-11">
-							<p class="mb-4">
-								<img src="/upload/${tot_Info.psb_thumb}" style="height: 300px; border-radius: 50%;" class="img-fluid rounded">
-							</p>
+						<div class="col-lg-11" >
+							<div id="div_thumb" style="float:left;width:50%;">
+								<p class="mb-4">
+									<img src="/upload/${tot_Info.psb_thumb}" style="height: 300px; border-radius: 50%;" class="img-fluid rounded">
+								</p>
+							</div>
+							<div id="div_title" style="float:right;width:40%; line-height:324px;">
+								<h2>${tot_Info.psb_title}</h2>
+							</div>
 						</div>
 		
 						<div class="col-lg-7">
-							<div class="mb-3">
-								<h2>${tot_Info.psb_title}</h2>
-							</div>
-						
 							<div class="d-block d-md-flex listing-horizontal">
 						<div class="lh-content">
 							<div class="mb-3">
@@ -625,7 +661,7 @@ ul>li, input {
 				              <ul class="comment-list">
 				                 <!-- 리뷰 동적으로 생성되는 공간 -->   
 				              </ul>
-				 
+							<c:if test="${sessionScope.loginInfo.mem_id ne tot_Info.psb_writer}">
 				              <div class="comment-form-wrap mb-5">
 				                <h7 class="mb-5">리뷰남기기</h7>
 				                  <div class="form-group">
@@ -652,46 +688,11 @@ ul>li, input {
 				                  
 				                  <div class="form-group" style="text-align:right">
 				                    <input type="button" id="submit_comment" value="Post Comment" class="btn btn-primary text-white btn-md">
-				                    <script>
-				                    	$(function(){
-				                    		$("#submit_comment").on("click",function(){
-				                    			var form ={
-				                    					rw_contents:$("#rw_contents").val(),
-				                    					rw_writer: "${ sessionScope.loginInfo.mem_id}",
-				                    					rw_star:$("#rw_star").val(),
-				                    					rw_petsitter_id:"${tot_Info.psb_writer}",
-				                    					rw_parent_seq: "${tot_Info.psb_seq}"
-				                    			}
-				                    			
-				                    			if($("#rw_contents").val()=="" ){ 
-				                    				alert("리뷰 내용을 입력해주세요.");
-				                    			}else if($("#rw_star").val()==""){
-				                    				alert("별점을 체크해주세요.");
-				                    			} else {
-				                    				$.ajax({
-					                    				url:"/review/insertProc",
-					                    				type:"POST",
-					                    				data:form,
-					                    				success:function(data){
-					                    					
-					                    					$(".star").removeClass("on");
-					                            			$("#rw_contents").val("");
-					                            			$("#contents").val("");
-					                            			alert("댓글이 등록되었습니다.");
-					                            			displayReview();
-					                    				},
-					                    				fail:function(){
-					                    					alert("insertProc err");
-					                    				}
-					                    			});
-				                    			}
-				                    			
-				                    		});
-				                    	})
-				
-				                    </script>
+
 				                  </div>
 				              </div>
+				              </c:if>
+				              
 				            </div>
 				
 						</div>
@@ -817,22 +818,25 @@ ul>li, input {
 								</c:choose>
 								</div>
 								
-								<hr class="mb-4">
-								<h3 class="h5 text-black mb-3 " style="text-align: center">
-											마이펫 선택<i class="icofont-paw"></i>
-										</h3>
+								<c:if test="${sessionScope.loginInfo.mem_id ne tot_Info.psb_writer}">
+									<hr class="mb-4">
+									<h3 class="h5 text-black mb-3 " style="text-align: center">
+										마이펫 선택<i class="icofont-paw"></i>
+									</h3>
 									<div class="my_pet" style="text-align: center">
 										<c:if test="${empty pet_list }">
 											등록된 펫이 없습니다.
 										</c:if>
 									
 										<c:forEach var="i" items="${pet_list }">
-											<span>
-												<input type="checkbox" id="${i.pet_name}" class="price_item" data-type="${i.pet_type}" name="rsv_pet_name" value="${i.pet_name}"><label for="${i.pet_name}">${i.pet_name}(${i.pet_type} )</label>
-											</span>
+											<div>
+												<input type="checkbox" id="${i.pet_name}" class="price_item" data-type="${i.pet_type}" name="rsv_pet_name" value="${i.pet_name}"><label for="${i.pet_name}">${i.pet_name}(${i.pet_type})</label>
+											</div>
 											
 										</c:forEach>
 									</div>
+								
+									
 								<hr class="mb-4">
 									<h3 class="h5 text-black mb-3 " style="text-align: center">
 										예상 포인트<i class="icofont-money"></i>
@@ -935,9 +939,11 @@ ul>li, input {
 		                              </div>
 		                              <div data-brackets-id='73'
 		                                 style="width: 310px; height: 1px; background-color: #EBEBEB; margin: 32px 0"></div>
-		                             
 		                           </div>
 								</div>	
+							</c:if>
+							<hr class="mb-4">
+								
 							</div>	
 								<div class="mb-5" style="text-align:center; ">
 									<c:choose>

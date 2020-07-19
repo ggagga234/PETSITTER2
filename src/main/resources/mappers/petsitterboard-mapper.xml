@@ -18,7 +18,7 @@
 	</insert>
 	
 	<insert id="createTb">
-		insert into cur_reserve (parent_board_seq, cur_date) values(#{parent_board_seq},#{cur_date})
+		insert into cur_reserve (parent_board_seq,cur_date) values(#{parent_board_seq},#{cur_date})
 	</insert>
 	
 	<delete id="deleteBoard">
@@ -90,14 +90,14 @@
 		update member set mem_point = mem_point-#{rsv_point} where mem_id = #{mem_id}
 	</update>
 	
-	<update id="updateSysPoint">
-		insert into reservation_point (reservation_seq, reservation_point) values (#{reservation_seq}, #{rsv_point})
-	</update>
+	<insert id="updateSysPoint">
+		insert into reservation_point (reservation_point_seq, reservation_seq, reservation_point) values (reservation_point_seq.nextval,#{reservation_seq}, #{rsv_point})
+	</insert>
 	
 	<select id="selectWaitlist" resultType="kh.pet.dto.WaitlistDTO">
 		select * from (select * from waitlist where mem_id = #{mem_id} order by wait_seq desc) where rownum <![CDATA[<=]]> 1
 	</select>
-	
+	 
 	<select id="selectMyPoint" resultType="int">
 		select mem_point from member where mem_id = #{mem_id}
 	</select>
