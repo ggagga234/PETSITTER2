@@ -178,7 +178,7 @@
 		                                   	<div class="col-4 col-lg"><button  class="btn btn-outline-primary my-2 my-sm-0 btn-sm message" id="${i.mem_id}" data-toggle="modal" data-target="#staticBackdrop">보내기</button></div>
 		                                   	<div class="col col-lg-3">
                                                  <select name="state" class="btn btn-info dropdown-toggle btn-sm state">
-                                                     <option value="no">통상</option>
+                                                     <option value="YES">통상</option>
                                                      <option value="3_stop">3일 정지 추가</option>
                                                      <option value="7_stop">7일 정지 추가</option>
                                                      <option value="f_stop">영구 정지</option>

@@ -209,11 +209,13 @@ public class CommunityController {
 					//게시글 신고 창 -- seq, target, id, reason 들어가 있음 나머지 채워서 db 넣기
 					r_dto.setR_parent_seq(cu_dto.getCu_seq());
 					r_dto.setReport_target(cu_dto.getCu_writer());
+					r_dto.setReport_id(report_id);
 					r_dto.setReport_type(1);
-					
 				}
 				else {
 					//댓글 신고 창 -- seq, target, id, contents 들어가 있음 나머지 채워서 db 넣기
+					
+					r_dto.setReport_id(report_id);
 					r_dto.setReport_type(2);
 				}
 				

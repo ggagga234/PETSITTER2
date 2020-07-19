@@ -23,7 +23,7 @@ public class CommunityService {
 	//게시글 작성
 	public int insert(CommunityDTO cu_dto)throws Exception{
 		if(cu_dto.getCu_thumb() == "") {
-			cu_dto.setCu_thumb("/uploadimage/32ddb23e-1552-43a4-afee-13a2af0b3513_고양이아이콘.jpg");
+			cu_dto.setCu_thumb("/uploadimage/0fc2f8cb-a0b1-4788-aa22-9f9a213efc72_mndg.jpg");
 			return cu_dao.insert(cu_dto);
 		}else {
 			return cu_dao.insert(cu_dto);	

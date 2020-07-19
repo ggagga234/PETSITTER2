@@ -170,7 +170,7 @@ RSS Feed: https://feeds.feedburner.com/Free-templateco
 								<c:otherwise>
 									<div class="col-md-4">
 										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-primary btn-md text-white" data-toggle="modal" data-target="#staticBackdrop">신고하기</button>
+										<button type="button" class="btn btn-primary btn-md text-white" data-toggle="modal" data-target="#staticBackdrop" >신고하기</button>
 									</div>
 								</c:otherwise>
 							</c:choose>
