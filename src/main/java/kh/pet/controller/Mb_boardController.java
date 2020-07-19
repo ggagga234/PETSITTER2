@@ -99,7 +99,7 @@ public class Mb_boardController {
 		for(String petname : petnamearr) {
 			pdto.setPet_name(petname);
 			pdto.setMaster_id(mdto.getMem_id());
-			pettype.add(service.getpettype(petname));	
+			pettype.add(service.getpettype(pdto));	
 		}
 
 		if(mlist.getMb_petphoto() != null) {
@@ -134,17 +134,13 @@ public class Mb_boardController {
 		MemboardDto bopet = service.bopet(mbdto.getMb_seq());		
 		String[] bopetarr = bopet.getMb_pet_name().split(",");
 		String[] servicearr = mlist.getMb_service().split(",");
-		String[] petnamearr = mlist.getMb_pet_name().split(",");
 		List<String> pettype = new ArrayList<String>();
 		List<String> services = new ArrayList<String>();
 		for(String boptype : bopetarr) {
-			pettype.add(service.getpettype(boptype));			
-		}
-
-		for(String petname : petnamearr) {
-			pdto.setPet_name(petname);
+			pdto.setPet_name(boptype);
 			pdto.setMaster_id(mdto.getMem_id());
-		}	
+			pettype.add(service.getpettype(pdto));			
+		}
 		if(mlist.getMb_petphoto() != null) {
 			String[] photoarr = mlist.getMb_petphoto().split(",",-1);
 			mlist.setPhoto(photoarr);
@@ -262,7 +258,6 @@ public class Mb_boardController {
 		service.deleteboard(mbdto);
 		return "redirect:mb_board";
 	}
-
 
 
 

@@ -115,7 +115,7 @@
 								<nav class="site-navigation position-relative text-right"
 									role="navigation">
 									<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-										<li><a href="/admin/adminindex"><span
+										<li><a href="/team"><span
 												style="font-size: 20px">팀 소개</span></a></li>
 										<li><a href="/mb/mb_board"><span
 												style="font-size: 20px">방문 돌봄</span></a></li>
@@ -301,7 +301,7 @@
 					<div class="col-lg-4">
 						<p class="mb-0">
 							<a href="signup.html"
-								class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
+								id="register_btn" class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">펫시터 지원하기</a>
 						</p>
 					</div>
 				</div>
@@ -441,6 +441,16 @@
 			})
 			
 		})
+	</script>
+	<script>
+	$("#register_btn").on("click",function(){
+	       if(${sessionScope.loginInfo.mem_type == '2'}){
+	          alert("이미 펫시터로 활동 중입니다. 마이페이지로 이동합니다.");
+	          location.href="/petsitter/outputSingle";
+	       } else if(${sessionScope.loginInfo.mem_type == '1'}){
+	          location.href="/petsitter/petsitter_register_form";
+	       } 
+	     });
 	</script>
 </body>
 

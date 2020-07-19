@@ -97,7 +97,7 @@
 	<select id="selectWaitlist" resultType="kh.pet.dto.WaitlistDTO">
 		select * from (select * from waitlist where mem_id = #{mem_id} order by wait_seq desc) where rownum <![CDATA[<=]]> 1
 	</select>
-	
+	 
 	<select id="selectMyPoint" resultType="int">
 		select mem_point from member where mem_id = #{mem_id}
 	</select>

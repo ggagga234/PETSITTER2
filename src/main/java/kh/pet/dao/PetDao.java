@@ -40,8 +40,8 @@ public class PetDao {
 		return mybatis.selectOne("membd.gettime", time);
 	}
 	
-	public String getpettype(String petname) throws Exception {
-		return mybatis.selectOne("membd.getpettype",petname);
+	public String getpettype(Mypet_regDTO pdto) throws Exception {
+		return mybatis.selectOne("membd.getpettype",pdto);
 	}
 	
 	public MemboardDto modlist(String mb_seq) throws Exception {
